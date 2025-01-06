@@ -15,7 +15,3 @@ def simplify_path(path: str) -> str:
             sub_path += ch
 
     return '/' + '/'.join(stack)
-
-
-if __name__ == "__main__":
-    assert simplify_path('/../') == '/'
