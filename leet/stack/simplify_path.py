@@ -1,3 +1,5 @@
+# 71. Simplify Path
+
 def simplify_path(path: str) -> str:
     stack = []
     sub_path = ''
