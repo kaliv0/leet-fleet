@@ -1,7 +1,6 @@
 # 150. Evaluate Reverse Polish Notation
 
 import operator
-from typing import List
 
 OPERATORS = {
     '+': operator.add,
@@ -10,7 +9,7 @@ OPERATORS = {
     '/': operator.truediv,
 }
 
-def evalRPN(tokens: List[str]) -> int:
+def evalRPN(tokens: list[str]) -> int:
     stack = []
     for token in tokens:
         if not token.strip("-").isnumeric():
