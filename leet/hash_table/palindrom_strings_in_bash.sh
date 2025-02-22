@@ -13,9 +13,7 @@ function validate_strings(){
         return
     fi
 
-    _validate $str1 $str2 $len1
-
-    if [[ $? -ne 0 ]]; then
+    if ! _validate "$str1" "$str2" "$len1"; then
         echo "'$str1 <=> $str2' are not palindromes"
     else
         echo "'$str1 <=> $str2' are palindromes"
@@ -31,7 +29,7 @@ function _validate(){
 
     local char1
     local char2
-    for ((i=0; i<$len; i++)); do
+    for ((i=0; i<len; i++)); do
         char1=${str1:$i:1}
         if [[ ${counter[$char1]} ]]; then
             ((counter[$char1]++))
@@ -47,11 +45,12 @@ function _validate(){
         fi
     done
 
-    for key in ${!counter[@]}; do
+    for key in "${!counter[@]}"; do
         if [[ ${counter[$key]} -ne 0 ]]; then
-            return -1
-        fi  
+            return 1
+        fi
     done
+    return 0
 }
 
 ##################################
@@ -62,7 +61,7 @@ declare -A strings=(
     ["c"]="abcd xyz"
 )
 
-for str in ${!strings[@]}; do
+for str in "${!strings[@]}"; do
     validate_strings ${strings[$str]}
 done
 
@@ -74,7 +73,7 @@ pair3=("abcd" "xyz")
 
 strings_matrix=("pair1" "pair2" "pair3")
 
-for pair in ${strings_matrix[@]}; do
+for pair in "${strings_matrix[@]}"; do
     declare -n str_arr=$pair
     validate_strings "${str_arr[@]}"
 done
