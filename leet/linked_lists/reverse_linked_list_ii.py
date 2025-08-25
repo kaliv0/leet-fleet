@@ -1,5 +1,7 @@
 from typing import Optional
 
+from leet.linked_lists.utils import traverse_list
+
 
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -57,18 +59,6 @@ def reverse_list(head, left, right):
     right_node = curr.next
     curr.next = prev
     return curr, right_node
-
-
-def traverse_list(node: ListNode):
-    if not node:
-        return []
-
-    res = []
-    while node.next:
-        res.append(node.val)
-        node = node.next
-    res.append(node.val)
-    return res
 
 
 if __name__ == "__main__":

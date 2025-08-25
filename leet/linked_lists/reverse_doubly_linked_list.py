@@ -1,14 +1,9 @@
 from typing import Optional
 
-
-class ListNode:
-    def __init__(self, val=0, prev=None, next=None):
-        self.val = val
-        self.prev = prev
-        self.next = next
+from leet.linked_lists.utils import DoublyListNode, traverse_list, traverse_back
 
 
-def reverse_list(head: Optional[ListNode]) -> Optional[ListNode]:
+def reverse_list(head: Optional[DoublyListNode]) -> Optional[DoublyListNode]:
     if not head or not head.next:
         return head
 
@@ -30,39 +25,13 @@ def reverse_list(head: Optional[ListNode]) -> Optional[ListNode]:
     return curr
 
 
-def traverse_list(node: ListNode):
-    if not node:
-        return []
-    res = []
-    while node.next:
-        res.append(node.val)
-        node = node.next
-    res.append(node.val)
-    return res
-
-
-def traverse_back(node: ListNode):
-    if not node:
-        return []
-    res = []
-    # go to tail
-    while node.next:
-        node = node.next
-    # move backwards and add values
-    while node.prev:
-        res.append(node.val)
-        node = node.prev
-    res.append(node.val)
-    return res
-
-
 if __name__ == "__main__":
     # case_1
-    one = ListNode(val=1)  # head
-    two = ListNode(val=2, prev=one)
-    three = ListNode(val=3, prev=two)
-    four = ListNode(val=4, prev=three)
-    five = ListNode(val=5, prev=four)  # tail
+    one = DoublyListNode(val=1)  # head
+    two = DoublyListNode(val=2, prev=one)
+    three = DoublyListNode(val=3, prev=two)
+    four = DoublyListNode(val=4, prev=three)
+    five = DoublyListNode(val=5, prev=four)  # tail
 
     one.next = two
     two.next = three
@@ -74,8 +43,8 @@ if __name__ == "__main__":
     assert traverse_back(reversed) == [1, 2, 3, 4, 5]
 
     # case_2
-    one = ListNode(val=1)  # head
-    two = ListNode(val=2, prev=one)  # tail
+    one = DoublyListNode(val=1)  # head
+    two = DoublyListNode(val=2, prev=one)  # tail
     one.next = two
 
     reversed = reverse_list(one)
@@ -83,7 +52,7 @@ if __name__ == "__main__":
     assert traverse_back(reversed) == [1, 2]
 
     # case_3
-    one = ListNode(val=1)  # head & tail
+    one = DoublyListNode(val=1)  # head & tail
     assert traverse_list(reverse_list(one)) == [1]
 
     # case_4
