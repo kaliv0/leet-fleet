@@ -15,7 +15,8 @@ def delete_middle(head: Optional[ListNode]) -> Optional[ListNode]:
         # move twice as fast as the slow pointer
         fast = fast.next.next
         slow = slow.next
-    # when fast pointer reaches the last node -> slow pointer as right before the middle one
+    # when fast pointer reaches the last node (number of nodes is even)
+    # -> slow pointer as right before the middle one
     slow.next = slow.next.next
     return head
 
