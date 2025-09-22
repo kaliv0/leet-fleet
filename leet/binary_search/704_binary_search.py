@@ -1,3 +1,5 @@
+# 704. Binary Search
+
 def binary_search(arr, num, offset=0):
     if not arr:
         return -1

@@ -1,3 +1,5 @@
+# 22. Generate Parentheses
+
 def generate_parenthesis(n: int) -> list[str]:
     stack = []
     result = []

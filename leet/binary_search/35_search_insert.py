@@ -1,3 +1,4 @@
+# 35. Search Insert Position
 def search_insert(nums: list[int], target: int) -> int:
     return bin_search(nums, target, 0, len(nums) - 1)
 
