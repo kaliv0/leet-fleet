@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-### test if strings are palindromes ###
+### test if strings are anagrams ###
 
 function validate_strings(){
     local str1=$1
@@ -9,14 +9,14 @@ function validate_strings(){
     local len2=${#str2}
 
     if [[ $len1 -ne $len2 ]]; then
-        echo "'$str1 <=> $str2' are not palindromes -> different lengths"
+        echo "'$str1 <=> $str2' are not anagrams -> different lengths"
         return
     fi
 
     if ! _validate "$str1" "$str2" "$len1"; then
-        echo "'$str1 <=> $str2' are not palindromes"
+        echo "'$str1 <=> $str2' are not anagrams"
     else
-        echo "'$str1 <=> $str2' are palindromes"
+        echo "'$str1 <=> $str2' are anagrams"
     fi
 }
 
