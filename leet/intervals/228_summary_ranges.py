@@ -5,7 +5,7 @@ def summary_ranges(nums):
     for i in range(1, len(nums) + 1):
         prev = i - 1
         if i == len(nums) or nums[i] != nums[prev] + 1:
-            if start == i - 1:
+            if start == prev:
                 result.append(str(nums[start]))
             else:
                 result.append(f"{nums[start]}->{nums[prev]}")
