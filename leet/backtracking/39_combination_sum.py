@@ -1,4 +1,31 @@
+# 39. Combination Sum
 def combination_sum(candidates: list[int], target: int) -> list[list[int]]:
+    res = []
+    dfs(candidates, [], target, res)
+    return res
+
+
+def dfs(nums: list[int], comb: list[int], target: int, res: list[list[int]]) -> None:
+    # add to res if meets criteria
+    if target == 0:
+        res.append(comb[:])
+        return
+    elif target < 0:
+        return
+
+    # backtrack for other combinations
+    for i in range(len(nums)):
+        curr_num = nums[i]
+        comb.append(curr_num)
+
+        sub_nums = nums[i:]
+        new_target = target - curr_num
+        dfs(sub_nums, comb, new_target, res)
+
+        comb.pop()
+
+
+def combination_sum_alt(candidates: list[int], target: int) -> list[list[int]]:
     res = []
     stack = []
 
