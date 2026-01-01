@@ -1,6 +1,20 @@
 # 3592. Inverse Coin Change
 def find_coins(num_ways: list[int]) -> list[int]:
-    ...
+    num_ways = [1] + num_ways  # add base case for zero
+    res = []
+
+    for i in range(1, len(num_ways)):
+        if num_ways[i] > 1:
+            return []
+        if num_ways[i] == 0:
+            continue
+
+        res.append(i)
+        for j in range(len(num_ways) - 1, i - 1, -1):
+            num_ways[j] -= num_ways[j - i]
+            if num_ways[j] < 0:
+                return []
+    return res
 
 
 if __name__ == "__main__":
