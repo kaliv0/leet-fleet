@@ -10,7 +10,8 @@ def k_smallest_pairs_opt(nums1: list[int], nums2: list[int], k: int) -> list[lis
 
     res = []
     while k > 0 and pairs:
-        curr_sum, i, j = heapq.heappop(pairs)
+        # NB: we discard curr_sum (first element in tuple) since we are only interested in indices
+        _, i, j = heapq.heappop(pairs)
         res.append([nums1[i], nums2[j]])
         # we add other pairs dynamically after popping from heap to keep memory allocation low
         if j + 1 < len(nums2):
@@ -57,7 +58,7 @@ class Pair:
 
 if __name__ == "__main__":
     for nums1, nums2, k, res in (
-            ([1, 7, 11], [2, 4, 6], 3, [[1, 2], [1, 4], [1, 6]]),
-            ([1, 1, 2], [1, 2, 3], 2, [[1, 1], [1, 1]]),
+        ([1, 7, 11], [2, 4, 6], 3, [[1, 2], [1, 4], [1, 6]]),
+        ([1, 1, 2], [1, 2, 3], 2, [[1, 1], [1, 1]]),
     ):
         assert (actual := k_smallest_pairs_opt(nums1, nums2, k)) == res, actual

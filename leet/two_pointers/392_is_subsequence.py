@@ -1,7 +1,4 @@
 # 392. Is Subsequence
-from zoneinfo import reset_tzpath
-
-
 def is_subsequence(s: str, t: str) -> bool:
     if len(s) > len(t):
         return False
