@@ -5,29 +5,33 @@ Progress: **75/150** problems completed (50%)
 ## Missing Problems by Category
 
 ### Array/String (3 missing)
-- [ ] 88 - Merge Sorted Array
-- [ ] 27 - Remove Element
+
 - [ ] 274 - H-Index
 
 ### Sliding Window (1 missing)
+
 - [ ] 76 - Minimum Window Substring
 
 ### Matrix (2 missing)
+
 - [ ] 36 - Valid Sudoku
 - [ ] 289 - Game of Life
 
 ### Hashmap (2 missing)
-- [ ] 1 - Two Sum
+
 - [ ] 290 - Word Pattern
 
 ### Stack (1 missing)
+
 - [ ] 20 - Valid Parentheses
 
 ### Linked List (2 missing)
+
 - [ ] 141 - Linked List Cycle
 - [ ] 25 - Reverse Nodes in k-Group
 
 ### Binary Tree General (11 missing)
+
 - [ ] 100 - Same Tree
 - [ ] 101 - Symmetric Tree
 - [ ] 105 - Construct Binary Tree from Preorder and Inorder Traversal
@@ -41,17 +45,20 @@ Progress: **75/150** problems completed (50%)
 - [ ] 236 - Lowest Common Ancestor of a Binary Tree
 
 ### Binary Tree BFS (4 missing)
+
 - [ ] 102 - Binary Tree Level Order Traversal
 - [ ] 103 - Binary Tree Zigzag Level Order Traversal
 - [ ] 199 - Binary Tree Right Side View
 - [ ] 637 - Average of Levels in Binary Tree
 
 ### Binary Search Tree (3 missing)
+
 - [ ] 98 - Validate Binary Search Tree
 - [ ] 230 - Kth Smallest Element in a BST
 - [ ] 530 - Minimum Absolute Difference in BST
 
 ### Graph General (6 missing)
+
 - [ ] 130 - Surrounded Regions
 - [ ] 133 - Clone Graph
 - [ ] 200 - Number of Islands
@@ -60,29 +67,30 @@ Progress: **75/150** problems completed (50%)
 - [ ] 399 - Evaluate Division
 
 ### Graph BFS (3 missing)
+
 - [ ] 127 - Word Ladder
 - [ ] 433 - Minimum Genetic Mutation
 - [ ] 909 - Snakes and Ladders
 
 ### Trie (3 missing)
+
 - [ ] 208 - Implement Trie (Prefix Tree)
 - [ ] 211 - Design Add and Search Words Data Structure
 - [ ] 212 - Word Search II
 
 ### Backtracking (1 missing)
+
 - [ ] 52 - N-Queens II
 
 ### Divide & Conquer (4 missing)
+
 - [ ] 23 - Merge k Sorted Lists
 - [ ] 108 - Convert Sorted Array to Binary Search Tree
 - [ ] 148 - Sort List
 - [ ] 427 - Construct Quad Tree
 
-### Kadane's Algorithm (2 missing)
-- [ ] 53 - Maximum Subarray
-- [ ] 918 - Maximum Sum Circular Subarray
-
 ### Binary Search (5 missing)
+
 - [ ] 4 - Median of Two Sorted Arrays
 - [ ] 33 - Search in Rotated Sorted Array
 - [ ] 74 - Search a 2D Matrix
@@ -90,10 +98,12 @@ Progress: **75/150** problems completed (50%)
 - [ ] 162 - Find Peak Element
 
 ### Heap (2 missing)
+
 - [ ] 295 - Find Median from Data Stream
 - [ ] 502 - IPO
 
 ### Bit Manipulation (6 missing)
+
 - [ ] 67 - Add Binary
 - [ ] 136 - Single Number
 - [ ] 137 - Single Number II
@@ -102,6 +112,7 @@ Progress: **75/150** problems completed (50%)
 - [ ] 201 - Bitwise AND of Numbers Range
 
 ### Math (5 missing)
+
 - [ ] 50 - Pow(x, n)
 - [ ] 66 - Plus One
 - [ ] 69 - Sqrt(x)
@@ -109,6 +120,7 @@ Progress: **75/150** problems completed (50%)
 - [ ] 172 - Factorial Trailing Zeroes
 
 ### Multidimensional DP (8 missing)
+
 - [ ] 63 - Unique Paths II
 - [ ] 64 - Minimum Path Sum
 - [ ] 72 - Edit Distance
@@ -118,7 +130,3 @@ Progress: **75/150** problems completed (50%)
 - [ ] 188 - Best Time to Buy and Sell Stock IV
 - [ ] 221 - Maximal Square
 
-## Completed Categories
-- Two Pointers
-- Intervals
-- 1D DP

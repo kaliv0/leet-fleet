@@ -1,23 +1,39 @@
 # 169. Majority Element
 
-from collections import defaultdict
-from typing import List
+def majority_element(nums: list[int]) -> int:
+    # Boyer-Moore's algorithm
+    candidate = None
+    count = 0
+    for num in nums:
+        if count == 0:
+            candidate = num
+            count = 1
+        else:
+            if candidate == num:
+                count += 1
+            else:
+                count -= 1
+
+    return candidate
 
 
-def majority_element(nums: List[int]) -> int:
+def majority_element_naive(nums: list[int]) -> int:
+    from collections import defaultdict
+
     half_size = len(nums) // 2
     count_map = defaultdict(int)
+    res = 0
     for n in nums:
         count_map[n] += 1
         if count_map[n] > half_size:
-            return n
+            res = n
+            break
+    return res
 
 
 if __name__ == '__main__':
-    nums = [3, 2, 3]
-    # output -> 3
-
-    nums = [2, 2, 1, 1, 1, 2, 2]
-    # output -> 2
-
-    print(majority_element(nums))
+    for nums, res in (
+            ([3, 2, 3], 3),
+            ([2, 2, 1, 1, 1, 2, 2], 2)
+    ):
+        assert (act := majority_element(nums)) == res, f'expected: {res} != actual: {act}'
