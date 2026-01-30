@@ -8,10 +8,6 @@ Progress: **75/150** problems completed (50%)
 
 - [ ] 274 - H-Index
 
-### Sliding Window (1 missing)
-
-- [ ] 76 - Minimum Window Substring
-
 ### Matrix (2 missing)
 
 - [ ] 36 - Valid Sudoku
@@ -20,10 +16,6 @@ Progress: **75/150** problems completed (50%)
 ### Hashmap (2 missing)
 
 - [ ] 290 - Word Pattern
-
-### Stack (1 missing)
-
-- [ ] 20 - Valid Parentheses
 
 ### Linked List (2 missing)
 
