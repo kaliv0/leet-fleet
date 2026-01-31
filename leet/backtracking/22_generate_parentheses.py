@@ -17,7 +17,6 @@ def generate_parenthesis(n: int) -> list[str]:
 
         if left_p_count == right_p_count == n:
             result.append("".join(stack))
-            return result
 
     _backtrack(0, 0)
     return result
