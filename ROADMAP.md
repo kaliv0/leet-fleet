@@ -1,9 +1,5 @@
 # LeetCode Top Interview 150 - Roadmap
 
-Progress: **75/150** problems completed (50%)
-
-## Missing Problems by Category
-
 ### Array/String (3 missing)
 
 - [ ] 274 - H-Index
@@ -19,7 +15,6 @@ Progress: **75/150** problems completed (50%)
 
 ### Linked List (2 missing)
 
-- [ ] 141 - Linked List Cycle
 - [ ] 25 - Reverse Nodes in k-Group
 
 ### Binary Tree General (11 missing)
