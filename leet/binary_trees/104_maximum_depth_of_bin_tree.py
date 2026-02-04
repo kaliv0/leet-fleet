@@ -3,12 +3,7 @@
 from collections import deque
 from typing import Optional
 
-
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left = None
-        self.right = None
+from leet.binary_trees.utils import TreeNode, bfs
 
 
 def max_depth(root):
@@ -37,22 +32,6 @@ def max_depth_rec(node: Optional[TreeNode]) -> int:
     right_depth = max_depth_rec(node.right)
     return max(left_depth, right_depth) + 1
     # NB: add 1 to account for current level
-
-
-def bfs(root):
-    if not root:
-        return []
-
-    res = []
-    queue = deque([root])
-    while queue:
-        curr = queue.pop()
-        res.append(curr.val)
-        if curr.left:
-            queue.appendleft(curr.left)
-        if curr.right:
-            queue.appendleft(curr.right)
-    return res
 
 
 if __name__ == "__main__":

@@ -19,12 +19,8 @@
 
 ### Binary Tree General (11 missing)
 
-- [ ] 100 - Same Tree
-- [ ] 101 - Symmetric Tree
 - [ ] 105 - Construct Binary Tree from Preorder and Inorder Traversal
 - [ ] 106 - Construct Binary Tree from Inorder and Postorder Traversal
-- [ ] 112 - Path Sum
-- [ ] 114 - Flatten Binary Tree to Linked List
 - [ ] 117 - Populating Next Right Pointers in Each Node II
 - [ ] 124 - Binary Tree Maximum Path Sum
 - [ ] 129 - Sum Root to Leaf Numbers

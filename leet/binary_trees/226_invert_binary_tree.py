@@ -2,12 +2,7 @@
 
 from collections import deque
 
-
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left = None
-        self.right = None
+from leet.binary_trees.utils import TreeNode, bfs
 
 
 def reverse_tree(root):
@@ -20,22 +15,6 @@ def reverse_tree(root):
         if curr.right:
             queue.appendleft(curr.right)
     return root
-
-
-# traverse tree to validate result
-def bfs(root):
-    if not root:
-        return []
-    res = []
-    queue = deque([root])
-    while queue:
-        curr = queue.pop()
-        res.append(curr.val)
-        if curr.left:
-            queue.appendleft(curr.left)
-        if curr.right:
-            queue.appendleft(curr.right)
-    return res
 
 
 if __name__ == "__main__":
