@@ -45,8 +45,13 @@ def convert(s: str, rows: int) -> str:
 
 
 if __name__ == "__main__":
-    assert convert("PAYPALISHIRING", 3) == "PAHNAPLSIIGYIR"
-    assert convert("PAYPALISHIRING", 4) == "PINALSIGYAHRPI"
-    assert convert("A", 1) == "A"
-    assert convert("AB", 1) == "AB"
-    assert convert("A", 2) == "A"
+    cases = [
+        ("PAYPALISHIRING", 3, "PAHNAPLSIIGYIR"),
+        ("PAYPALISHIRING", 4, "PINALSIGYAHRPI"),
+        ("A", 1, "A"),
+        ("AB", 1, "AB"),
+        ("A", 2, "A"),
+    ]
+
+    for s, num_rows, result in cases:
+        assert (actual := convert(s, num_rows)) == result, actual

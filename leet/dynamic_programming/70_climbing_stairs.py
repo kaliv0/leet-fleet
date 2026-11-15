@@ -1,10 +1,6 @@
 # 70. Climbing Stairs
 
-memo = {
-    0: 0,
-    1: 1,
-    2: 2
-}
+memo = {0: 0, 1: 1, 2: 2}
 
 
 def climb_stairs(n):
@@ -18,16 +14,7 @@ def climb_stairs(n):
 
 
 if __name__ == "__main__":
-    cases = [
-        (0, 0),
-        (1, 1),
-        (2, 2),
-        (3, 3),
-        (4, 5),
-        (5, 8),
-        (11, 144)
-    ]
+    cases = [(0, 0), (1, 1), (2, 2), (3, 3), (4, 5), (5, 8), (11, 144)]
 
     for n, res in cases:
-        assert (actual := climb_stairs(n)) == res, \
-            f"{actual} != {res}, {n=}"
+        assert (actual := climb_stairs(n)) == res, f"{actual} != {res}, {n=}"

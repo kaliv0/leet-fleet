@@ -1,7 +1,6 @@
 # 92. Reverse Linked List II
-from typing import Optional
 
-from leet.linked_lists.utils import traverse_list
+from leet.linked_lists.utils import build_list, traverse_list
 
 
 class ListNode:
@@ -10,7 +9,7 @@ class ListNode:
         self.next = next
 
 
-def reverse_between(head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+def reverse_between(head: ListNode | None, left: int, right: int) -> ListNode | None:
     if not head or left == right:
         return head
 
@@ -63,55 +62,16 @@ def reverse_list(head, left, right):
 
 
 if __name__ == "__main__":
-    # case_1 -> range in middle
-    five = ListNode(val=5, next=None)  # tail
-    four = ListNode(val=4, next=five)
-    three = ListNode(val=3, next=four)
-    two = ListNode(val=2, next=three)
-    one = ListNode(val=1, next=two)  # head
+    cases = [
+        ([1, 2, 3, 4, 5], 2, 4, [1, 4, 3, 2, 5]),
+        ([1, 2, 3, 4, 5], 1, 4, [4, 3, 2, 1, 5]),
+        ([1, 2, 3, 4, 5], 2, 5, [1, 5, 4, 3, 2]),
+        ([1, 2, 3, 4, 5], 1, 5, [5, 4, 3, 2, 1]),
+        ([5], 1, 1, [5]),
+        ([], 1, 3, []),
+    ]
 
-    left = 2
-    right = 4
-    assert traverse_list(reverse_between(one, left, right)) == [1, 4, 3, 2, 5]
-
-    # case_2 -> left side to middle
-    five = ListNode(val=5, next=None)  # tail
-    four = ListNode(val=4, next=five)
-    three = ListNode(val=3, next=four)
-    two = ListNode(val=2, next=three)
-    one = ListNode(val=1, next=two)  # head
-
-    left = 1
-    right = 4
-    assert traverse_list(reverse_between(one, left, right)) == [4, 3, 2, 1, 5]
-
-    # case_3 -> middle to right side
-    five = ListNode(val=5, next=None)  # tail
-    four = ListNode(val=4, next=five)
-    three = ListNode(val=3, next=four)
-    two = ListNode(val=2, next=three)
-    one = ListNode(val=1, next=two)  # head
-
-    left = 2
-    right = 5
-    assert traverse_list(reverse_between(one, left, right)) == [1, 5, 4, 3, 2]
-
-    # case_4 -> full reversal
-    five = ListNode(val=5, next=None)  # tail
-    four = ListNode(val=4, next=five)
-    three = ListNode(val=3, next=four)
-    two = ListNode(val=2, next=three)
-    one = ListNode(val=1, next=two)  # head
-
-    left = 1
-    right = 5
-    assert traverse_list(reverse_between(one, left, right)) == [5, 4, 3, 2, 1]
-
-    # case_5
-    one = ListNode(val=5, next=None)  # head & tail
-    left = 1
-    right = 1
-    assert traverse_list(reverse_between(one, left, right)) == [5]
-
-    # case_6
-    assert traverse_list(res := reverse_between(None, 1, 3)) == []
+    for inp, left, right, result in cases:
+        assert (
+            actual := traverse_list(reverse_between(build_list(inp), left, right))
+        ) == result, actual

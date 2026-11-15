@@ -1,5 +1,5 @@
 # 234. Palindrome Linked List
-from leet.linked_lists.utils import ListNode
+from leet.linked_lists.utils import ListNode, build_list
 
 
 def is_palindrome(head):
@@ -25,31 +25,12 @@ def is_palindrome(head):
 
 
 if __name__ == "__main__":
-    list_1 = ListNode(
-        val=1, next=ListNode(
-            val=2, next=ListNode(
-                val=2, next=ListNode(
-                    val=1
-                )
-            )
-        )
-    )
-    assert is_palindrome(list_1) is True
+    cases = [
+        ([1, 2, 2, 1], True),
+        ([1, 2, 3, 2, 1], True),
+        ([1, 2, 3], False),
+        ([0], True),
+    ]
 
-    list_2 = ListNode(
-        val=1, next=ListNode(
-            val=2, next=ListNode(
-                val=3, next=ListNode(
-                    val=2, next=ListNode(
-                        val=1
-                    )
-                )
-            )
-        )
-    )
-    assert is_palindrome(list_2) is True
-
-    list_3 = ListNode(val=1, next=ListNode(val=2, next=ListNode(val=3)))
-    assert is_palindrome(list_3) is False
-
-    assert is_palindrome(ListNode(val=0)) is True
+    for inp, result in cases:
+        assert (actual := is_palindrome(build_list(inp))) is result, actual

@@ -14,6 +14,9 @@ def add_digits(num: int) -> int:
 
 
 if __name__ == "__main__":
-    assert add_digits(38) == 2
-    assert add_digits(0) == 0
-    assert add_digits(1) == 1
+    for num, result in (
+        (38, 2),
+        (0, 0),
+        (1, 1),
+    ):
+        assert (actual := add_digits(num)) == result, actual

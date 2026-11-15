@@ -8,13 +8,13 @@ digits_2_letters = {
     "6": "mno",
     "7": "pqrs",
     "8": "tuv",
-    "9": "wxyz"
+    "9": "wxyz",
 }
 
 
 def letter_combinations(digits: str) -> list[str]:
     res = []
-    dfs(digits, '', 0, res)
+    dfs(digits, "", 0, res)
     return res
 
 
@@ -34,7 +34,7 @@ def dfs(nums, candidate, idx, res):
 
 if __name__ == "__main__":
     for digits, res in (
-            ("23", ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]),
-            ("2", ["a", "b", "c"]),
+        ("23", ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]),
+        ("2", ["a", "b", "c"]),
     ):
         assert (actual := letter_combinations(digits)) == res, actual

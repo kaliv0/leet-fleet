@@ -1,9 +1,9 @@
-from typing import Optional
+# @skip: helper
+# type:ignore
+from leet.linked_lists.utils import DoublyListNode, traverse_back, traverse_list
 
-from leet.linked_lists.utils import DoublyListNode, traverse_list, traverse_back
 
-
-def reverse_list(head: Optional[DoublyListNode]) -> Optional[DoublyListNode]:
+def reverse_list(head: DoublyListNode | None) -> DoublyListNode | None:
     if not head or not head.next:
         return head
 

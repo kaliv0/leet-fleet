@@ -1,5 +1,5 @@
 # 86. Partition List
-from leet.linked_lists.utils import ListNode, traverse_list
+from leet.linked_lists.utils import ListNode, build_list, traverse_list
 
 
 def partition(head, x):
@@ -32,11 +32,7 @@ def partition(head, x):
 
 
 if __name__ == "__main__":
-    list_1 = ListNode(
-        val=1, next=ListNode(
-            val=4, next=ListNode(
-                val=3, next=ListNode(
-                    val=2, next=ListNode(
-                        val=5, next=ListNode(
-                            val=2))))))
-    assert traverse_list(partition(list_1, 3)) == [1, 2, 2, 4, 3, 5]
+    for inp, x, result in (([1, 4, 3, 2, 5, 2], 3, [1, 2, 2, 4, 3, 5]),):
+        assert (actual := traverse_list(partition(build_list(inp), x))) == result, (
+            actual
+        )

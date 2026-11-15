@@ -1,8 +1,7 @@
 # 15. 3Sum
-from typing import List
 
 
-def three_sum(nums: List[int]) -> List[List[int]]:
+def three_sum(nums: list[int]) -> list[list[int]]:
     # sort to be able to apply variation of "two sum" algorithm
     nums.sort()
     result = []
@@ -37,8 +36,13 @@ def three_sum(nums: List[int]) -> List[List[int]]:
 
 
 if __name__ == "__main__":
-    assert three_sum([1, 0, -1, 2, -1, -4]) == [[-1, -1, 2], [-1, 0, 1]]
-    assert three_sum([0, 1, 1]) == []
-    assert three_sum([0, 0, 0]) == [[0, 0, 0]]
-    assert three_sum([0, 0, 0, 0]) == [[0, 0, 0]]
-    assert three_sum([-1, -1, -1, 0, 0, 1, 1, 1]) == [[-1, 0, 1]]
+    cases = [
+        ([1, 0, -1, 2, -1, -4], [[-1, -1, 2], [-1, 0, 1]]),
+        ([0, 1, 1], []),
+        ([0, 0, 0], [[0, 0, 0]]),
+        ([0, 0, 0, 0], [[0, 0, 0]]),
+        ([-1, -1, -1, 0, 0, 1, 1, 1], [[-1, 0, 1]]),
+    ]
+
+    for nums, result in cases:
+        assert (actual := three_sum(nums)) == result, actual

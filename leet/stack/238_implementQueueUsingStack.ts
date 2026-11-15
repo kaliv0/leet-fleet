@@ -41,9 +41,32 @@ class MyQueue {
     }
 }
 
-const myQueue = new MyQueue();
-console.log(myQueue.push(1)); // queue is: [1]
-console.log(myQueue.push(2)); // queue is: [1, 2] (leftmost is front of the queue)
-console.log(myQueue.peek()); // return 1
-console.log(myQueue.pop()); // return 1, queue is [2]
-console.log(myQueue.empty()); // return false
+const myQueueCases = [
+    {
+        steps: [
+            { op: "push", x: 1 },
+            { op: "push", x: 2 },
+            { op: "peek", result: 1 },
+            { op: "pop", result: 1 },
+            { op: "empty", result: false },
+        ],
+    },
+];
+
+myQueueCases.forEach(({ steps }) => {
+    const queue = new MyQueue();
+    steps.forEach((step) => {
+        if (step.op === "push") {
+            queue.push(step.x!);
+        } else if (step.op === "peek") {
+            const actual = queue.peek();
+            console.assert(actual === step.result, `${actual} !== ${step.result}`);
+        } else if (step.op === "pop") {
+            const actual = queue.pop();
+            console.assert(actual === step.result, `${actual} !== ${step.result}`);
+        } else if (step.op === "empty") {
+            const actual = queue.empty();
+            console.assert(actual === step.result, `${actual} !== ${step.result}`);
+        }
+    });
+});

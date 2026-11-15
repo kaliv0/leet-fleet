@@ -1,8 +1,6 @@
 # 328. Odd Even Linked List
 
-from typing import Optional
-
-from leet.linked_lists.utils import ListNode, traverse_list
+from leet.linked_lists.utils import ListNode, build_list, traverse_list
 
 
 def odd_even_dance(head):
@@ -25,7 +23,7 @@ def odd_even_dance(head):
     return head
 
 
-def odd_even_list(head: Optional[ListNode]) -> Optional[ListNode]:
+def odd_even_list(head: ListNode | None) -> ListNode | None:
     if head is None or head.next is None:
         return head
 
@@ -54,42 +52,16 @@ def odd_even_list(head: Optional[ListNode]) -> Optional[ListNode]:
 
 
 if __name__ == "__main__":
-    list_1 = ListNode(
-        val=1, next=ListNode(
-            val=2, next=ListNode(
-                val=3, next=ListNode(
-                    val=4, next=ListNode(
-                        val=5, next=ListNode(
-                            val=6))))))
-    # assert traverse_list(odd_even_list(list_1)) == [1, 3, 5, 2, 4, 6]
-    assert traverse_list(odd_even_dance(list_1)) == [1, 3, 5, 2, 4, 6]
+    cases = [
+        ([1, 2, 3, 4, 5, 6], [1, 3, 5, 2, 4, 6]),
+        ([2, 1, 3, 5, 6, 4, 7], [2, 3, 6, 7, 1, 5, 4]),
+        ([1, 2, 3, 4, 5], [1, 3, 5, 2, 4]),
+        ([1, 2], [1, 2]),
+        ([1], [1]),
+        ([], []),
+    ]
 
-    list_2 = ListNode(
-        val=2, next=ListNode(
-            val=1, next=ListNode(
-                val=3, next=ListNode(
-                    val=5, next=ListNode(
-                        val=6, next=ListNode(
-                            val=4, next=ListNode(
-                                val=7)))))))
-    # assert traverse_list(odd_even_list(list_2)) == [2, 3, 6, 7, 1, 5, 4]
-    assert traverse_list(odd_even_dance(list_2)) == [2, 3, 6, 7, 1, 5, 4]
-
-    list_3 = ListNode(
-        val=1, next=ListNode(
-            val=2, next=ListNode(
-                val=3, next=ListNode(
-                    val=4, next=ListNode(
-                        val=5)))))
-    # assert traverse_list(odd_even_list(list_3)) == [1, 3, 5, 2, 4]
-    assert traverse_list(odd_even_dance(list_3)) == [1, 3, 5, 2, 4]
-
-    list_4 = ListNode(val=1, next=ListNode(val=2))
-    # assert traverse_list(odd_even_list(list_4)) == [1, 2]
-    assert traverse_list(odd_even_dance(list_4)) == [1, 2]
-
-    # assert traverse_list(odd_even_list(ListNode(val=1))) == [1]
-    assert traverse_list(odd_even_dance(ListNode(val=1))) == [1]
-
-    # assert traverse_list(odd_even_list(None)) == []
-    assert traverse_list(odd_even_dance(None)) == []
+    for inp, result in cases:
+        assert (actual := traverse_list(odd_even_dance(build_list(inp)))) == result, (
+            actual
+        )

@@ -33,6 +33,9 @@ def largest_integer(num: int) -> int:
 
 
 if __name__ == "__main__":
-    assert largest_integer(1234) == 3412
-    assert largest_integer(65875) == 87655
-    assert largest_integer(247) == 427
+    for num, result in (
+        (1234, 3412),
+        (65875, 87655),
+        (247, 427),
+    ):
+        assert (actual := largest_integer(num)) == result, actual

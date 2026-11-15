@@ -26,7 +26,7 @@ function threeSumClosest(nums: number[], target: number): number {
 }
 
 const cases = [
-    { nums: [-1, 2, 1, -4], target: 1, result: 20 },
+    { nums: [-1, 2, 1, -4], target: 1, result: 2 },
     { nums: [0, 0, 0], target: 1, result: 0 },
     { nums: [1, 2, 7, 13], target: 12, result: 10 },
 ];

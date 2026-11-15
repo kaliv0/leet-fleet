@@ -12,9 +12,14 @@ def is_palindrome(x):
     return x == rev
 
 
-if __name__ == '__main__':
-    assert is_palindrome(121) is True
-    assert is_palindrome(-121) is False
-    assert is_palindrome(1) is True
-    assert is_palindrome(1221) is True
-    assert is_palindrome(123) is False
+if __name__ == "__main__":
+    cases = [
+        (121, True),
+        (-121, False),
+        (1, True),
+        (1221, True),
+        (123, False),
+    ]
+
+    for x, result in cases:
+        assert (actual := is_palindrome(x)) == result, actual

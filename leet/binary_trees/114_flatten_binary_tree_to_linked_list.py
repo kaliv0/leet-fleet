@@ -1,10 +1,9 @@
 # 114. Flatten Binary Tree to Linked List
-from typing import Optional
 
 from leet.binary_trees.utils import TreeNode
 
 
-def flatten_naive(root: Optional[TreeNode]) -> None:
+def flatten_naive(root: TreeNode | None) -> None:
     # Do not return anything, modify root in-place instead.
     if not root:
         return
@@ -28,7 +27,7 @@ def flatten_naive(root: Optional[TreeNode]) -> None:
 
 
 #######################
-def flatten(root: Optional[TreeNode]) -> None:
+def flatten(root: TreeNode | None) -> None:
     # Morris' traversal
     if not root:
         return
@@ -51,7 +50,7 @@ def flatten(root: Optional[TreeNode]) -> None:
         node = node.right
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     def _traverse(root):
         res = []
@@ -59,24 +58,20 @@ if __name__ == '__main__':
             res.append(str(root.val))
             root = root.right
 
-        return ' -> '.join(res)
+        return " -> ".join(res)
 
-
-    root = TreeNode(1,
-                    left=TreeNode(2,
-                                  left=TreeNode(3),
-                                  right=TreeNode(4)),
-                    right=TreeNode(5,
-                                   left=None,
-                                   right=TreeNode(6)))
-
-    flatten(root)
-    assert _traverse(root) == '1 -> 2 -> 3 -> 4 -> 5 -> 6'
-
-    root = None
-    flatten(root)
-    assert _traverse(root) == ''
-
-    root = TreeNode(0)
-    flatten(root)
-    assert _traverse(root) == '0'
+    for build, result in (
+        (
+            lambda: TreeNode(
+                1,
+                left=TreeNode(2, left=TreeNode(3), right=TreeNode(4)),
+                right=TreeNode(5, left=None, right=TreeNode(6)),
+            ),
+            "1 -> 2 -> 3 -> 4 -> 5 -> 6",
+        ),
+        (lambda: None, ""),
+        (lambda: TreeNode(0), "0"),
+    ):
+        root = build()
+        flatten(root)
+        assert (actual := _traverse(root)) == result, actual

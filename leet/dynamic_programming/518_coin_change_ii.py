@@ -13,9 +13,5 @@ def change(amount: int, coins: list[int]) -> int:
 
 
 if __name__ == "__main__":
-    for amount, coins, res in (
-            (5, [1, 2, 5], 4),
-            (3, [2], 0),
-            (10, [10], 1)
-    ):
+    for amount, coins, res in ((5, [1, 2, 5], 4), (3, [2], 0), (10, [10], 1)):
         assert (actual := change(amount, coins)) == res, f"{actual} != {res}"

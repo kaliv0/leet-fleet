@@ -11,5 +11,12 @@ function triangularSum(nums: number[]): number {
     return nums[0];
 }
 
-console.assert(triangularSum([1, 2, 3, 4, 5]) === 8);
-console.assert(triangularSum([5]) === 5);
+const triangularSumCases = [
+    { nums: [1, 2, 3, 4, 5], result: 8 },
+    { nums: [5], result: 5 },
+];
+
+triangularSumCases.forEach(({ nums, result }) => {
+    const actual = triangularSum(nums);
+    console.assert(actual === result, `${actual} !== ${result}`);
+});

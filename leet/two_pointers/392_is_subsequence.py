@@ -25,6 +25,9 @@ def is_subsequence_diff(s: str, t: str) -> bool:
 
 
 if __name__ == "__main__":
-    assert is_subsequence("abc", "ahbgdc")
-    assert is_subsequence("axc", "ahbgdc") is False
-    assert is_subsequence("", "ahbgdc")
+    for s, t, result in (
+        ("abc", "ahbgdc", True),
+        ("axc", "ahbgdc", False),
+        ("", "ahbgdc", True),
+    ):
+        assert (actual := is_subsequence(s, t)) is result, actual

@@ -1,9 +1,8 @@
 # 138. Copy List with Random Pointer
-from typing import Optional
 
 
 class Node:
-    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+    def __init__(self, x: int, next: "Node" = None, random: "Node" = None):
         self.val = int(x)
         self.next = next
         self.random = random
@@ -21,7 +20,7 @@ def traverse_list(node: Node):
     return res
 
 
-def copy_random_list(head: Optional[Node]) -> Optional[Node]:
+def copy_random_list(head: Node | None) -> Node | None:
     if head is None:
         return None
 
@@ -46,26 +45,21 @@ def copy_random_list(head: Optional[Node]) -> Optional[Node]:
 
 
 if __name__ == "__main__":
-    # case_1 -> [[7,null],[13,0],[11,4],[10,2],[1,0]]
-    head = Node(7)
-    node_1 = Node(13)
-    node_2 = Node(11)
-    node_3 = Node(10)
-    node_4 = Node(1)
 
-    head.next = node_1
-    head.random = None
+    def build(desc):
+        if not desc:
+            return None
+        nodes = [Node(v) for v, _ in desc]
+        for i, (_, r) in enumerate(desc):
+            if i + 1 < len(nodes):
+                nodes[i].next = nodes[i + 1]
+            nodes[i].random = None if r is None else nodes[r]
+        return nodes[0]
 
-    node_1.next = node_2
-    node_1.random = head
-
-    node_2.next = node_3
-    node_2.random = node_4
-
-    node_3.next = node_4
-    node_3.random = node_2
-
-    node_4.next = None
-    node_4.random = head
-
-    assert traverse_list(copy_random_list(head)) == [[7, None], [13, 7], [11, 1], [10, 11], [1, 7]]
+    for inp, result in (
+        (
+            [[7, None], [13, 0], [11, 4], [10, 2], [1, 0]],
+            [[7, None], [13, 7], [11, 1], [10, 11], [1, 7]],
+        ),
+    ):
+        assert (actual := traverse_list(copy_random_list(build(inp)))) == result, actual

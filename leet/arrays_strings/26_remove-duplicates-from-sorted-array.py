@@ -1,9 +1,7 @@
 # 26. Remove Duplicates from Sorted Array
 
-from typing import List
 
-
-def remove_duplicates(nums: List[int]) -> int:
+def remove_duplicates(nums: list[int]) -> int:
     if len(nums) == 0:
         return 0
 
@@ -17,12 +15,10 @@ def remove_duplicates(nums: List[int]) -> int:
     return cnt
 
 
-if __name__ == '__main__':
-    # nums = [1, 1, 2]
-    # output -> 2, nums = [1,2,_]
-
-    nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
-    # output -> 5, nums = [0,1,2,3,4,_,_,_,_,_]
-
-    print(remove_duplicates(nums))
-    print(nums)
+if __name__ == "__main__":
+    for nums, k, expected in (
+        ([1, 1, 2], 2, [1, 2]),
+        ([0, 0, 1, 1, 1, 2, 2, 3, 3, 4], 5, [0, 1, 2, 3, 4]),
+    ):
+        assert (actual := remove_duplicates(nums)) == k, actual
+        assert nums[:k] == expected, nums

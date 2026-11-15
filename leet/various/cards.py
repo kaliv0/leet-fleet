@@ -1,3 +1,4 @@
+# @skip: not a leetcode solution
 # Sort (deck of) cards by value && by suit
 
 from dataclasses import dataclass
@@ -16,8 +17,8 @@ class MappedCard:
     card: Card
 
 
-VALUES_MAP = {'J': 11, 'Q': 12, 'K': 13, 'A': 14}
-SUIT_MAP = {'C': 1, 'D': 2, 'H': 3, 'S': 4}  # clubs, diamonds, hearts, spades
+VALUES_MAP = {"J": 11, "Q": 12, "K": 13, "A": 14}
+SUIT_MAP = {"C": 1, "D": 2, "H": 3, "S": 4}  # clubs, diamonds, hearts, spades
 
 
 def sort_cards(cards):
@@ -27,8 +28,10 @@ def sort_cards(cards):
 
 
 def _construct_key(card):
-    return (int(card.value) if card.value.isdigit() else VALUES_MAP[card.value],
-            SUIT_MAP[card.suit])
+    return (
+        int(card.value) if card.value.isdigit() else VALUES_MAP[card.value],
+        SUIT_MAP[card.suit],
+    )
     ## alternatively use single key -> value * 10 + suit -> first 1 or 2 digits represent value code, last digit is the suit code
     # return (int(card.value) if card.value.isdigit() else VALUES_MAP[card.value]) * 10 + SUIT_MAP[card.suit]
 

@@ -15,6 +15,9 @@ def dominant_index(nums: list[int]) -> int:
 
 
 if __name__ == "__main__":
-    assert dominant_index([3, 6, 1, 0]) == 1
-    assert dominant_index([1, 2, 3, 4]) == -1
-    assert dominant_index([0, 0, 0, 1]) == 3
+    for nums, result in (
+        ([3, 6, 1, 0], 1),
+        ([1, 2, 3, 4], -1),
+        ([0, 0, 0, 1], 3),
+    ):
+        assert (actual := dominant_index(nums)) == result, actual

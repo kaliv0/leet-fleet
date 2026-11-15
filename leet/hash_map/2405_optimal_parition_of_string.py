@@ -1,5 +1,6 @@
 # 2405. Optimal Partition of String
 
+
 def partition_string(s: str) -> int:
     curr_partition = set()
     result = 1
@@ -12,5 +13,8 @@ def partition_string(s: str) -> int:
 
 
 if __name__ == "__main__":
-    assert partition_string("abacaba") == 4
-    assert partition_string("ssssss") == 6
+    for s, result in (
+        ("abacaba", 4),
+        ("ssssss", 6),
+    ):
+        assert (actual := partition_string(s)) == result, actual

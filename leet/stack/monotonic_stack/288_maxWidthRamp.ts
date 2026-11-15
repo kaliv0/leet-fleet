@@ -35,5 +35,12 @@ function maxWidthRamp(nums: number[]): number {
     return maxWidth;
 }
 
-console.assert(maxWidthRamp([6, 0, 8, 2, 1, 5]) == 4);
-console.assert(maxWidthRamp([9, 8, 1, 0, 1, 9, 4, 0, 4, 1]) == 7);
+const maxWidthRampCases = [
+    { nums: [6, 0, 8, 2, 1, 5], result: 4 },
+    { nums: [9, 8, 1, 0, 1, 9, 4, 0, 4, 1], result: 7 },
+];
+
+maxWidthRampCases.forEach(({ nums, result }) => {
+    const actual = maxWidthRamp(nums);
+    console.assert(actual === result, `${actual} !== ${result}`);
+});

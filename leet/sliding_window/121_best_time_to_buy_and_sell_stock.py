@@ -18,5 +18,8 @@ def max_profit(prices: list[int]) -> int:
 
 
 if __name__ == "__main__":
-    assert max_profit([7, 1, 5, 3, 6, 4]) == 5
-    assert max_profit([7, 6, 4, 3, 1]) == 0
+    for prices, result in (
+        ([7, 1, 5, 3, 6, 4], 5),
+        ([7, 6, 4, 3, 1], 0),
+    ):
+        assert (actual := max_profit(prices)) == result, actual

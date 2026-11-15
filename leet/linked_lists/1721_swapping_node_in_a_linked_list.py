@@ -1,10 +1,9 @@
 # 1721. Swapping Nodes in a Linked List
-from typing import Optional
 
-from leet.linked_lists.utils import ListNode, traverse_list
+from leet.linked_lists.utils import ListNode, build_list, traverse_list
 
 
-def swap_nodes(head: Optional[ListNode], k: int) -> Optional[ListNode]:
+def swap_nodes(head: ListNode | None, k: int) -> ListNode | None:
     if not head or not head.next:
         return head
 
@@ -52,31 +51,11 @@ def find_left_right_unoptimized(dummy, head, k):
 
 
 if __name__ == "__main__":
-    list_1 = ListNode(
-        val=1, next=ListNode(
-            val=2, next=ListNode(
-                val=3, next=ListNode(
-                    val=4, next=ListNode(
-                        val=5)))))
-    assert traverse_list(swap_nodes(list_1, 2)) == [1, 4, 3, 2, 5]
-
-    list_2 = ListNode(
-        val=7, next=ListNode(
-            val=9, next=ListNode(
-                val=6, next=ListNode(
-                    val=6, next=ListNode(
-                        val=7, next=ListNode(
-                            val=8, next=ListNode(
-                                val=3, next=ListNode(
-                                    val=0, next=ListNode(
-                                        val=9, next=ListNode(
-                                            val=5))))))))))
-    assert traverse_list(swap_nodes(list_2, 5)) == [7, 9, 6, 6, 8, 7, 3, 0, 9, 5]
-
-    list_3 = ListNode(
-        val=1, next=ListNode(
-            val=2, next=ListNode(
-                val=3, next=ListNode(
-                    val=4, next=ListNode(
-                        val=5)))))
-    assert traverse_list(swap_nodes(list_3, 1)) == [5, 2, 3, 4, 1]
+    for inp, k, result in (
+        ([1, 2, 3, 4, 5], 2, [1, 4, 3, 2, 5]),
+        ([7, 9, 6, 6, 7, 8, 3, 0, 9, 5], 5, [7, 9, 6, 6, 8, 7, 3, 0, 9, 5]),
+        ([1, 2, 3, 4, 5], 1, [5, 2, 3, 4, 1]),
+    ):
+        assert (actual := traverse_list(swap_nodes(build_list(inp), k))) == result, (
+            actual
+        )

@@ -21,6 +21,13 @@ def sort_array_by_parity_ii(nums: list[int]) -> list[int]:
 
 
 if __name__ == "__main__":
-    assert sort_array_by_parity_ii([4, 2, 5, 7]) in ([4, 7, 2, 5], [2, 5, 4, 7], [2, 7, 4, 5], [4, 5, 2, 7])
-    assert sort_array_by_parity_ii([2, 3]) == [2, 3]
-    assert sort_array_by_parity_ii([]) == []
+    for nums, result in (
+        ([4, 2, 5, 7], ([4, 7, 2, 5], [2, 5, 4, 7], [2, 7, 4, 5], [4, 5, 2, 7])),
+        ([2, 3], [2, 3]),
+        ([], []),
+    ):
+        actual = sort_array_by_parity_ii(nums)
+        if isinstance(result, tuple):
+            assert actual in result, actual
+        else:
+            assert actual == result, actual

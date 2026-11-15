@@ -1,7 +1,6 @@
 # 104. Maximum Depth of Binary Tree
 
 from collections import deque
-from typing import Optional
 
 from leet.binary_trees.utils import TreeNode, bfs
 
@@ -25,7 +24,7 @@ def max_depth(root):
     return maximum_depth
 
 
-def max_depth_rec(node: Optional[TreeNode]) -> int:
+def max_depth_rec(node: TreeNode | None) -> int:
     if not node:
         return 0
     left_depth = max_depth_rec(node.left)
@@ -35,81 +34,70 @@ def max_depth_rec(node: Optional[TreeNode]) -> int:
 
 
 if __name__ == "__main__":
-    #        3
-    #   9         20
-    #         15    17
 
-    three = TreeNode(3)
-    nine = TreeNode(9)
-    twenty = TreeNode(20)
-    fifteen = TreeNode(15)
-    seventeen = TreeNode(17)
+    def _build_case1():
+        #        3
+        #   9         20
+        #         15    17
+        three = TreeNode(3)
+        nine = TreeNode(9)
+        twenty = TreeNode(20)
+        fifteen = TreeNode(15)
+        seventeen = TreeNode(17)
+        three.left = nine
+        three.right = twenty
+        twenty.left = fifteen
+        twenty.right = seventeen
+        return three
 
-    three.left = nine
-    three.right = twenty
-    twenty.left = fifteen
-    twenty.right = seventeen
+    def _build_case2():
+        #        1
+        #   2        3
+        # 4    5
+        one = TreeNode(1)
+        two = TreeNode(2)
+        three = TreeNode(3)
+        four = TreeNode(4)
+        five = TreeNode(5)
+        one.left = two
+        one.right = three
+        two.left = four
+        two.right = five
+        return one
 
-    assert (res := bfs(three)) == [3, 9, 20, 15, 17], res
-    assert (res := max_depth(three)) == 3, res
-    assert (res := max_depth_rec(three)) == 3, res
+    def _build_case3():
+        #        1
+        #   2        3
+        # 4             5
+        one = TreeNode(1)
+        two = TreeNode(2)
+        three = TreeNode(3)
+        four = TreeNode(4)
+        five = TreeNode(5)
+        one.left = two
+        one.right = three
+        two.left = four
+        three.right = five
+        return one
 
-    # case_2
+    def _build_case4():
+        root = TreeNode(val=1)
+        leaf = TreeNode(val=2)
+        root.right = leaf
+        return root
 
-    #        1
-    #   2        3
-    # 4    5
+    cases = [
+        (_build_case1, [3, 9, 20, 15, 17], 3),
+        (_build_case2, [1, 2, 3, 4, 5], 3),
+        (_build_case3, [1, 2, 3, 4, 5], 3),
+        (_build_case4, [1, 2], 2),
+        (lambda: TreeNode(val=1), None, 1),
+        (lambda: None, [], 0),
+    ]
 
-    one = TreeNode(1)
-    two = TreeNode(2)
-    three = TreeNode(3)
-    four = TreeNode(4)
-    five = TreeNode(5)
-
-    one.left = two
-    one.right = three
-    two.left = four
-    two.right = five
-
-    assert (res := bfs(one)) == [1, 2, 3, 4, 5], res
-    assert (res := max_depth(one)) == 3, res
-    assert (res := max_depth_rec(one)) == 3, res
-
-    # case_3
-
-    #        1
-    #   2        3
-    # 4             5
-
-    one = TreeNode(1)
-    two = TreeNode(2)
-    three = TreeNode(3)
-    four = TreeNode(4)
-    five = TreeNode(5)
-
-    one.left = two
-    one.right = three
-    two.left = four
-    three.right = five
-
-    assert (res := bfs(one)) == [1, 2, 3, 4, 5], res
-    assert (res := max_depth(one)) == 3, res
-    assert (res := max_depth_rec(one)) == 3, res
-
-    # case_3
-    root = TreeNode(val=1)
-    leaf = TreeNode(val=2)
-    root.right = leaf
-    assert bfs(root) == [1, 2]
-    assert (res := max_depth(root)) == 2, res
-    assert (res := max_depth_rec(root)) == 2, res
-
-    # case_4
-    single = TreeNode(val=1)
-    assert (res := max_depth(single)) == 1, res
-    assert (res := max_depth_rec(single)) == 1, res
-
-    # case_5
-    assert bfs(None) == []
-    assert (res := max_depth(None)) == 0, res
-    assert (res := max_depth_rec(None)) == 0, res
+    for build, bfs_result, depth in cases:
+        root = build()
+        if bfs_result is not None:
+            assert (actual := bfs(root)) == bfs_result, actual
+        assert (actual := max_depth(root)) == depth, actual
+        assert (actual := max_depth_rec(root)) == depth, actual

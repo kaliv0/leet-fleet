@@ -24,5 +24,8 @@ def pivot_array_two_pointers(nums: list[int], pivot: int) -> list[int]:
 
 
 if __name__ == "__main__":
-    assert pivot_array_two_pointers(nums=[9, 12, 5, 10, 14, 3, 10], pivot=10) == [9, 5, 3, 10, 10, 12, 14]
-    assert pivot_array_two_pointers(nums=[-3, 4, 3, 2], pivot=2) == [-3, 2, 4, 3]
+    for nums, pivot, result in (
+        ([9, 12, 5, 10, 14, 3, 10], 10, [9, 5, 3, 10, 10, 12, 14]),
+        ([-3, 4, 3, 2], 2, [-3, 2, 4, 3]),
+    ):
+        assert (actual := pivot_array_two_pointers(nums, pivot)) == result, actual

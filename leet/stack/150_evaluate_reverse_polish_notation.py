@@ -3,11 +3,12 @@
 import operator
 
 OPERATORS = {
-    '+': operator.add,
-    '-': operator.sub,
-    '*': operator.mul,
-    '/': operator.truediv,
+    "+": operator.add,
+    "-": operator.sub,
+    "*": operator.mul,
+    "/": operator.truediv,
 }
+
 
 def evalRPN(tokens: list[str]) -> int:
     stack = []
@@ -20,9 +21,12 @@ def evalRPN(tokens: list[str]) -> int:
 
 
 if __name__ == "__main__":
-    assert evalRPN(["2", "1", "+", "3", "*"]) == 9
-    assert evalRPN(["4","13","5","/","+"]) == 6
-    assert evalRPN(["10","6","9","3","+","-11","*","/","*","17","+","5","+"]) == 22
+    for tokens, result in (
+        (["2", "1", "+", "3", "*"], 9),
+        (["4", "13", "5", "/", "+"], 6),
+        (["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"], 22),
+    ):
+        assert (actual := evalRPN(tokens)) == result, actual
 
 # NB: The division between two integers always truncates toward zero
 # => use int(x / y) instead of (x // y) if y is negative

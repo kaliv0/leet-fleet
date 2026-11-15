@@ -40,11 +40,11 @@ def full_justify(words: list[str], max_width: int) -> list[str]:
 
 
 def _justify_left(line, max_width):
-    line_str = ''
-    for word in line[:- 1]:
-        line_str += word + ' '
+    line_str = ""
+    for word in line[:-1]:
+        line_str += word + " "
     last_word = line[-1]
-    line_str += last_word + (' ' * (max_width - (len(line_str) + len(last_word))))
+    line_str += last_word + (" " * (max_width - (len(line_str) + len(last_word))))
     return line_str
 
 
@@ -54,7 +54,7 @@ def _pad_words(line, max_width):
 
     line_str = line[0]
     for i in range(1, len(line)):
-        padding = ' ' * (pad_cnt + 1) if rem > 0 else ' ' * pad_cnt
+        padding = " " * (pad_cnt + 1) if rem > 0 else " " * pad_cnt
         line_str += padding + line[i]
         rem -= 1
 
@@ -63,43 +63,84 @@ def _pad_words(line, max_width):
 
 if __name__ == "__main__":
     for words, max_width, res in (
-            (["This", "is", "an", "example", "of", "text", "justification."], 16,
-             [
-                 "This    is    an",
-                 "example  of text",
-                 "justification.  "
-             ]),
-            (["What", "must", "be", "acknowledgment", "shall", "be"], 16,
-             [
-                 # Note that the last line is "shall be    " instead of "shall     be", because the last line
-                 # must be left - justified instead of fully - justified.
-                 #
-                 # Note that the second line is also left - justified because it contains only one word.
-                 # (that is -> if the number of spaces on a line does not divide evenly between words,
-                 # the empty slots on the left will be assigned more spaces than the slots on the right.)
-                 "What   must   be",
-                 "acknowledgment  ",
-                 "shall be        "
-             ]),
-            (["Science", "is", "what", "we", "understand", "well", "enough", "to", "explain", "to", "a",
-              "computer.", "Art", "is", "everything", "else", "we", "do"], 20,
-             [
-                 "Science  is  what we",
-                 "understand      well",
-                 "enough to explain to",
-                 "a  computer.  Art is",
-                 "everything  else  we",
-                 "do                  "
-             ]),
-            (["The", "important", "thing", "is", "not", "to", "stop", "questioning.", "Curiosity", "has",
-              "its", "own", "reason", "for", "existing."], 17,
-             [
-                 "The     important",
-                 "thing  is  not to",
-                 "stop questioning.",
-                 "Curiosity has its",
-                 "own   reason  for",
-                 "existing.        "
-             ]),
+        (
+            ["This", "is", "an", "example", "of", "text", "justification."],
+            16,
+            ["This    is    an", "example  of text", "justification.  "],
+        ),
+        (
+            ["What", "must", "be", "acknowledgment", "shall", "be"],
+            16,
+            [
+                # Note that the last line is "shall be    " instead of "shall     be", because the last line
+                # must be left - justified instead of fully - justified.
+                #
+                # Note that the second line is also left - justified because it contains only one word.
+                # (that is -> if the number of spaces on a line does not divide evenly between words,
+                # the empty slots on the left will be assigned more spaces than the slots on the right.)
+                "What   must   be",
+                "acknowledgment  ",
+                "shall be        ",
+            ],
+        ),
+        (
+            [
+                "Science",
+                "is",
+                "what",
+                "we",
+                "understand",
+                "well",
+                "enough",
+                "to",
+                "explain",
+                "to",
+                "a",
+                "computer.",
+                "Art",
+                "is",
+                "everything",
+                "else",
+                "we",
+                "do",
+            ],
+            20,
+            [
+                "Science  is  what we",
+                "understand      well",
+                "enough to explain to",
+                "a  computer.  Art is",
+                "everything  else  we",
+                "do                  ",
+            ],
+        ),
+        (
+            [
+                "The",
+                "important",
+                "thing",
+                "is",
+                "not",
+                "to",
+                "stop",
+                "questioning.",
+                "Curiosity",
+                "has",
+                "its",
+                "own",
+                "reason",
+                "for",
+                "existing.",
+            ],
+            17,
+            [
+                "The     important",
+                "thing  is  not to",
+                "stop questioning.",
+                "Curiosity has its",
+                "own   reason  for",
+                "existing.        ",
+            ],
+        ),
     ):
         assert (actual := full_justify(words, max_width)) == res, actual

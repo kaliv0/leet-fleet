@@ -1,5 +1,6 @@
 # 13. Roman to Integer
 
+
 def roman_to_int(s: str) -> int:
     NUMS_MAP = {
         "I": 1,
@@ -22,9 +23,10 @@ def roman_to_int(s: str) -> int:
     return result
 
 
-if __name__ == '__main__':
-    # s = "III"
-    # s = "LVIII"
-    s = "MCMXCIV"
-
-    print(roman_to_int(s))
+if __name__ == "__main__":
+    for s, result in (
+        ("III", 3),
+        ("LVIII", 58),
+        ("MCMXCIV", 1994),
+    ):
+        assert (actual := roman_to_int(s)) == result, actual

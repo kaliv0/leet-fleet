@@ -17,6 +17,9 @@ def length_of_longest_substring(s: str) -> int:
 
 
 if __name__ == "__main__":
-    assert length_of_longest_substring("abcabcbb") == 3
-    assert length_of_longest_substring("bbbbb") == 1
-    assert length_of_longest_substring("pwwkew") == 3
+    for s, result in (
+        ("abcabcbb", 3),
+        ("bbbbb", 1),
+        ("pwwkew", 3),
+    ):
+        assert (actual := length_of_longest_substring(s)) == result, actual

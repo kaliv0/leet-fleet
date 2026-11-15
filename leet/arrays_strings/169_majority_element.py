@@ -1,5 +1,6 @@
 # 169. Majority Element
 
+
 def majority_element(nums: list[int]) -> int:
     # Boyer-Moore's algorithm
     candidate = None
@@ -31,9 +32,8 @@ def majority_element_naive(nums: list[int]) -> int:
     return res
 
 
-if __name__ == '__main__':
-    for nums, res in (
-            ([3, 2, 3], 3),
-            ([2, 2, 1, 1, 1, 2, 2], 2)
-    ):
-        assert (act := majority_element(nums)) == res, f'expected: {res} != actual: {act}'
+if __name__ == "__main__":
+    for nums, res in (([3, 2, 3], 3), ([2, 2, 1, 1, 1, 2, 2], 2)):
+        assert (act := majority_element(nums)) == res, (
+            f"expected: {res} != actual: {act}"
+        )

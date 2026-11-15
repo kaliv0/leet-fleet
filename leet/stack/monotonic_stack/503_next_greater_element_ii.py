@@ -15,9 +15,9 @@ def next_greater_elements(nums: list[int]) -> list[int]:
     return res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     for nums, res in (
-            ([1, 2, 1], [2, -1, 2]),
-            ([1, 2, 3, 4, 3], [2, 3, 4, -1, 4]),
+        ([1, 2, 1], [2, -1, 2]),
+        ([1, 2, 3, 4, 3], [2, 3, 4, -1, 4]),
     ):
         assert (actual := next_greater_elements(nums)) == res, actual

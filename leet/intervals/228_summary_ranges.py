@@ -14,11 +14,10 @@ def summary_ranges(nums):
 
 
 if __name__ == "__main__":
-    cases = [
+    for nums, ranges in (
         ([0, 1, 2, 4, 5, 7], ["0->2", "4->5", "7"]),
         ([0, 2, 3, 4, 6, 8, 9], ["0", "2->4", "6", "8->9"]),
-    ]
-
-    for nums, ranges in cases:
-        assert (actual := summary_ranges(nums)) == ranges, \
+    ):
+        assert (actual := summary_ranges(nums)) == ranges, (
             f"{actual} != {ranges}, {nums=}"
+        )

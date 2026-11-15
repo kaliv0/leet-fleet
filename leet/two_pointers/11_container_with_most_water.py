@@ -1,8 +1,7 @@
 # 11. Container With Most Water
-from typing import List
 
 
-def max_area(height: List[int]) -> int:
+def max_area(height: list[int]) -> int:
     area = 0
     left = 0
     right = len(height) - 1
@@ -25,7 +24,12 @@ def max_area(height: List[int]) -> int:
 
 
 if __name__ == "__main__":
-    assert max_area([1, 8, 6, 2, 5, 4, 8, 3, 7]) == 49
-    assert max_area([1, 7, 2, 5, 4, 7, 3, 6]) == 36
-    assert max_area([2, 2, 2]) == 4
-    assert max_area([1, 1]) == 1
+    cases = [
+        ([1, 8, 6, 2, 5, 4, 8, 3, 7], 49),
+        ([1, 7, 2, 5, 4, 7, 3, 6], 36),
+        ([2, 2, 2], 4),
+        ([1, 1], 1),
+    ]
+
+    for height, result in cases:
+        assert (actual := max_area(height)) == result, actual

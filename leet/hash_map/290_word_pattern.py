@@ -1,5 +1,5 @@
 def word_pattern(pattern: str, s: str) -> bool:
-    words = s.split(' ')
+    words = s.split(" ")
     if len(words) != len(pattern):
         return False
 
@@ -17,11 +17,13 @@ def word_pattern(pattern: str, s: str) -> bool:
     return True
 
 
-if __name__ == '__main__':
-    for i, (p, s, res) in enumerate((
-            ("abba", "dog cat cat dog", True),
-            ("abba", "dog dog dog dog", False),
-            ("abba", "dog cat cat fish", False),
-            ("aaaa", "dog cat cat dog", False)
-    )):
-        assert (act := word_pattern(p, s)) == res, f"{act} != {res}, {i=}"
+if __name__ == "__main__":
+    cases = [
+        ("abba", "dog cat cat dog", True),
+        ("abba", "dog dog dog dog", False),
+        ("abba", "dog cat cat fish", False),
+        ("aaaa", "dog cat cat dog", False),
+    ]
+
+    for p, s, res in cases:
+        assert (act := word_pattern(p, s)) == res, f"{act} != {res}"

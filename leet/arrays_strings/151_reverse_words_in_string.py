@@ -30,6 +30,9 @@ def reverse_words(s: str) -> str:
 
 
 if __name__ == "__main__":
-    assert reverse_words("the sky is blue") == "blue is sky the"
-    assert reverse_words("  hello world  ") == "world hello"
-    assert reverse_words("a good   example") == "example good a"
+    for s, result in (
+        ("the sky is blue", "blue is sky the"),
+        ("  hello world  ", "world hello"),
+        ("a good   example", "example good a"),
+    ):
+        assert (actual := reverse_words(s)) == result, actual

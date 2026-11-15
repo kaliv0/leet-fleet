@@ -1,5 +1,6 @@
 # 735. Asteroid Collision
 
+
 def asteroid_collision(asteroids: list[int]) -> list[int]:
     stack = []
     for a in asteroids:
@@ -17,8 +18,13 @@ def asteroid_collision(asteroids: list[int]) -> list[int]:
     return stack
 
 
-if __name__ == '__main__':
-    assert asteroid_collision([5, 10, -5]) == [5,10]
-    assert asteroid_collision([8,-8]) == []
-    assert asteroid_collision([10,2,-5]) == [10]
-    assert asteroid_collision([-2,-1,1,2]) == [-2,-1,1,2]
+if __name__ == "__main__":
+    cases = [
+        ([5, 10, -5], [5, 10]),
+        ([8, -8], []),
+        ([10, 2, -5], [10]),
+        ([-2, -1, 1, 2], [-2, -1, 1, 2]),
+    ]
+
+    for asteroids, result in cases:
+        assert (actual := asteroid_collision(asteroids)) == result, actual

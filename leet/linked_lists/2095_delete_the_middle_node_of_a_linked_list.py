@@ -1,10 +1,9 @@
 # 2095. Delete the Middle Node of a Linked List
-from typing import Optional
 
-from leet.linked_lists.utils import ListNode, traverse_list
+from leet.linked_lists.utils import ListNode, build_list, traverse_list
 
 
-def delete_middle(head: Optional[ListNode]) -> Optional[ListNode]:
+def delete_middle(head: ListNode | None) -> ListNode | None:
     if head.next is None:
         # only on node
         return None
@@ -22,45 +21,14 @@ def delete_middle(head: Optional[ListNode]) -> Optional[ListNode]:
 
 
 if __name__ == "__main__":
-    list_1 = ListNode(
-        val=1,
-        next=ListNode(
-            val=3,
-            next=ListNode(
-                val=4,
-                next=ListNode(
-                    val=7,
-                    next=ListNode(
-                        val=1,
-                        next=ListNode(
-                            val=2,
-                            next=ListNode(
-                                val=6,
-                            )
-                        )
-                    )
-                )
-            )
+    cases = [
+        ([1, 3, 4, 7, 1, 2, 6], [1, 3, 4, 1, 2, 6]),
+        ([1, 2, 3, 4], [1, 2, 4]),
+        ([2, 1], [2]),
+        ([1], []),
+    ]
+
+    for inp, result in cases:
+        assert (actual := traverse_list(delete_middle(build_list(inp)))) == result, (
+            actual
         )
-    )
-    assert traverse_list(delete_middle(list_1)) == [1, 3, 4, 1, 2, 6]
-
-    list_2 = ListNode(
-        val=1,
-        next=ListNode(
-            val=2,
-            next=ListNode(
-                val=3,
-                next=ListNode(
-                    val=4,
-                )
-            )
-        )
-    )
-    assert traverse_list(delete_middle(list_2)) == [1, 2, 4]
-
-    list_3 = ListNode(val=2, next=ListNode(val=1))
-    assert traverse_list(delete_middle(list_3)) == [2]
-
-    list_4 = ListNode(val=1)
-    assert traverse_list(delete_middle(list_4)) == []

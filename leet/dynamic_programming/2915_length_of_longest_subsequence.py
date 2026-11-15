@@ -13,8 +13,10 @@ def length_of_longest_subsequence(nums: list[int], target: int) -> int:
 
 if __name__ == "__main__":
     for nums, target, res in (
-            ([1, 2, 3, 4, 5], 9, 3),  # [1,3,5], and [2,3,4]
-            ([4, 1, 3, 2, 1, 5], 7, 4),  # [1,3,2,1]
-            ([1, 1, 5, 4, 5], 3, -1),
+        ([1, 2, 3, 4, 5], 9, 3),  # [1,3,5], and [2,3,4]
+        ([4, 1, 3, 2, 1, 5], 7, 4),  # [1,3,2,1]
+        ([1, 1, 5, 4, 5], 3, -1),
     ):
-        assert (actual := length_of_longest_subsequence(nums, target)) == res, f"{actual} != {res}"
+        assert (actual := length_of_longest_subsequence(nums, target)) == res, (
+            f"{actual} != {res}"
+        )

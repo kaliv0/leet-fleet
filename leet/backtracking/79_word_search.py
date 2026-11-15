@@ -13,14 +13,16 @@ def exist(board: list[list[str]], word: str) -> bool:
 
         # backtrack
         tmp = board[i][j]
-        board[i][j] = ''  # mark as read
+        board[i][j] = ""  # mark as read
 
         # search adjacent squares of next char (i.e. next word idx)
         next_word_idx = k + 1
-        if _backtrack(i + 1, j, next_word_idx) \
-            or _backtrack(i, j + 1, next_word_idx) \
-            or _backtrack(i - 1, j, next_word_idx) \
-            or _backtrack(i, j - 1, next_word_idx):
+        if (
+            _backtrack(i + 1, j, next_word_idx)
+            or _backtrack(i, j + 1, next_word_idx)
+            or _backtrack(i - 1, j, next_word_idx)
+            or _backtrack(i, j - 1, next_word_idx)
+        ):
             return True
 
         board[i][j] = tmp  # bring init val
@@ -35,8 +37,20 @@ def exist(board: list[list[str]], word: str) -> bool:
 
 if __name__ == "__main__":
     for board, word, res in (
-            ([["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "ABCCED", True),
-            ([["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "SEE", True),
-            ([["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "ABCB", False),
+        (
+            [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]],
+            "ABCCED",
+            True,
+        ),
+        (
+            [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]],
+            "SEE",
+            True,
+        ),
+        (
+            [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]],
+            "ABCB",
+            False,
+        ),
     ):
         assert (actual := exist(board, word)) == res, actual

@@ -40,6 +40,9 @@ def rearrange_array_opt(nums: list[int]) -> list[int]:
 
 
 if __name__ == "__main__":
-    assert rearrange_array_opt([3, 1, -2, -5, 2, -4]) == [3, -2, 1, -5, 2, -4]
-    assert rearrange_array_opt([-1, 1]) == [1, -1]
-    assert rearrange_array_opt([2, 3, -1, -4]) == [2, -1, 3, -4]
+    for nums, result in (
+        ([3, 1, -2, -5, 2, -4], [3, -2, 1, -5, 2, -4]),
+        ([-1, 1], [1, -1]),
+        ([2, 3, -1, -4], [2, -1, 3, -4]),
+    ):
+        assert (actual := rearrange_array_opt(nums)) == result, actual

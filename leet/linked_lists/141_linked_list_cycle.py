@@ -1,11 +1,10 @@
 # 141. Linked List Cycle
-from typing import Optional
 
 from leet.linked_lists.utils import ListNode
 
 
 # Floyd's algorithm (Hare & Tortoise)
-def has_cycle(head: Optional[ListNode]) -> bool:
+def has_cycle(head: ListNode | None) -> bool:
     if head is None:
         return False
 
@@ -31,7 +30,7 @@ def has_cycle(head: Optional[ListNode]) -> bool:
     # return False
 
 
-def has_cycle_alt(head: Optional[ListNode]) -> bool:
+def has_cycle_alt(head: ListNode | None) -> bool:
     if head is None:
         return False
 

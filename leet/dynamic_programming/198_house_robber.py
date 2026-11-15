@@ -31,8 +31,5 @@ def rob_alt(nums: list[int]) -> int:
 
 
 if __name__ == "__main__":
-    for nums, res in (
-            ([1, 2, 3, 1], 4),
-            ([2, 7, 9, 3, 1], 12)
-    ):
+    for nums, res in (([1, 2, 3, 1], 4), ([2, 7, 9, 3, 1], 12)):
         assert (actual := rob_alt(nums)) == res, actual

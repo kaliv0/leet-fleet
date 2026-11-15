@@ -1,10 +1,9 @@
 # 19. Remove Nth Node From End of List
-from typing import Optional
 
-from leet.linked_lists.utils import ListNode, traverse_list
+from leet.linked_lists.utils import ListNode, build_list, traverse_list
 
 
-def remove_nth_from_end(head: Optional[ListNode], n: int) -> Optional[ListNode]:
+def remove_nth_from_end(head: ListNode | None, n: int) -> ListNode | None:
     fast = head
     slow = head
 
@@ -23,25 +22,11 @@ def remove_nth_from_end(head: Optional[ListNode], n: int) -> Optional[ListNode]:
 
 
 if __name__ == "__main__":
-    list_1 = ListNode(
-        val=1,
-        next=ListNode(
-            val=2,
-            next=ListNode(
-                val=3,
-                next=ListNode(
-                    val=4,
-                    next=ListNode(
-                        val=5,
-                    )
-                )
-            )
-        )
-    )
-    assert traverse_list(remove_nth_from_end(list_1, n=2)) == [1, 2, 3, 5]
-
-    list_2 = ListNode(val=1)
-    assert traverse_list(remove_nth_from_end(list_2, n=1)) == []
-
-    list_3 = ListNode(val=1, next=ListNode(val=2))
-    assert traverse_list(remove_nth_from_end(list_3, n=2)) == [2]
+    for inp, n, result in (
+        ([1, 2, 3, 4, 5], 2, [1, 2, 3, 5]),
+        ([1], 1, []),
+        ([1, 2], 2, [2]),
+    ):
+        assert (
+            actual := traverse_list(remove_nth_from_end(build_list(inp), n))
+        ) == result, actual

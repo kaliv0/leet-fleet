@@ -1,5 +1,6 @@
 # 134. Gas Station
 
+
 def can_complete_circuit(gas, cost):
     total_tank = 0
     tank = 0
@@ -16,11 +17,10 @@ def can_complete_circuit(gas, cost):
 
 
 if __name__ == "__main__":
-    cases = [
+    for gas, cost, result in (
         ([1, 2, 3, 4, 5], [3, 4, 5, 1, 2], 3),
         ([2, 3, 4], [3, 4, 3], -1),
-    ]
-
-    for gas, cost, result in cases:
-        assert (actual := can_complete_circuit(gas, cost)) == result, \
+    ):
+        assert (actual := can_complete_circuit(gas, cost)) == result, (
             f"{actual} != {result}, {gas=}, {cost=}"
+        )

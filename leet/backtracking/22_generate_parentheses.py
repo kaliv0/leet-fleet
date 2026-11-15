@@ -1,17 +1,18 @@
 # 22. Generate Parentheses
 
+
 def generate_parenthesis(n: int) -> list[str]:
     stack = []
     result = []
 
     def _backtrack(left_p_count, right_p_count):
         if left_p_count < n:
-            stack.append('(')
+            stack.append("(")
             _backtrack(left_p_count + 1, right_p_count)
             stack.pop()
 
         if left_p_count > right_p_count:
-            stack.append(')')
+            stack.append(")")
             _backtrack(left_p_count, right_p_count + 1)
             stack.pop()
 
@@ -22,12 +23,10 @@ def generate_parenthesis(n: int) -> list[str]:
     return result
 
 
-if __name__ == '__main__':
-    cases = [
+if __name__ == "__main__":
+    for n, result in (
         (3, ["((()))", "(()())", "(())()", "()(())", "()()()"]),
         (2, ["(())", "()()"]),
         (1, ["()"]),
-    ]
-
-    for n, result in cases:
+    ):
         assert (actual := generate_parenthesis(n)) == result, actual
