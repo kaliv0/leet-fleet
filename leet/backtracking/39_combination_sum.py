@@ -50,12 +50,10 @@ def combination_sum_alt(candidates: list[int], target: int) -> list[list[int]]:
     return res
 
 
-if __name__ == '__main__':
-    cases = [
+if __name__ == "__main__":
+    for nums, target, res in (
         ([2, 3, 6, 7], 7, [[2, 2, 3], [7]]),
         ([2, 3, 5], 8, [[2, 2, 2, 2], [2, 3, 3], [3, 5]]),
-        ([2], 1, [])
-    ]
-
-    for nums, target, res in cases:
+        ([2], 1, []),
+    ):
         assert (actual := combination_sum(nums, target)) == res, actual

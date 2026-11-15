@@ -37,13 +37,13 @@ def longestConsecutive_hash(nums: list[int]) -> int:
     return max_len
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     for nums, res in (
-            ([100, 4, 200, 1, 3, 2], 4),
-            ([0, 3, 7, 2, 5, 8, 4, 6, 0, 1], 9),
-            ([1, 0, 1, 2], 3),
-            ([], 0),
-            ([1], 1),
-            ([1, 2, 2, 3, 5, 6], 3)
+        ([100, 4, 200, 1, 3, 2], 4),
+        ([0, 3, 7, 2, 5, 8, 4, 6, 0, 1], 9),
+        ([1, 0, 1, 2], 3),
+        ([], 0),
+        ([1], 1),
+        ([1, 2, 2, 3, 5, 6], 3),
     ):
         assert (act := longestConsecutive_hash(nums)) == res, f"{res} != {act}"

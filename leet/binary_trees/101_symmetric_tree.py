@@ -1,10 +1,9 @@
 # 101. Symmetric Tree
-from typing import Optional
 
 from leet.binary_trees.utils import TreeNode
 
 
-def is_symmetric(root: Optional[TreeNode]) -> bool:
+def is_symmetric(root: TreeNode | None) -> bool:
     if not (root.left or root.right):
         return True
 
@@ -36,7 +35,7 @@ def is_symmetric(root: Optional[TreeNode]) -> bool:
 
 
 #########################
-def is_symmetric_recursive(root: Optional[TreeNode]) -> bool:
+def is_symmetric_recursive(root: TreeNode | None) -> bool:
     return _is_mirror(root.left, root.right)
 
 
@@ -47,29 +46,33 @@ def _is_mirror(left, right):
     if not left or not right:
         return False
 
-    return (left.val == right.val) and (_is_mirror(left.left, right.right)) and (
-        _is_mirror(left.right, right.left))
+    return (
+        (left.val == right.val)
+        and (_is_mirror(left.left, right.right))
+        and (_is_mirror(left.right, right.left))
+    )
 
 
-if __name__ == '__main__':
-    root = TreeNode(1,
-                    left=TreeNode(2,
-                                  left=TreeNode(3),
-                                  right=TreeNode(4)),
-                    right=TreeNode(2,
-                                   left=TreeNode(4),
-                                   right=TreeNode(3))
-                    )
-    assert is_symmetric(root) is True
-    assert is_symmetric_recursive(root) is True
-
-    root = TreeNode(1,
-                    left=TreeNode(2,
-                                  right=TreeNode(3)),
-                    right=TreeNode(2,
-                                   right=TreeNode(3)))
-    assert is_symmetric(root) is False
-    assert is_symmetric_recursive(root) is False
-
-    assert is_symmetric(TreeNode(1)) is True
-    assert is_symmetric_recursive(TreeNode(1)) is True
+if __name__ == "__main__":
+    for build, result in (
+        (
+            lambda: TreeNode(
+                1,
+                left=TreeNode(2, left=TreeNode(3), right=TreeNode(4)),
+                right=TreeNode(2, left=TreeNode(4), right=TreeNode(3)),
+            ),
+            True,
+        ),
+        (
+            lambda: TreeNode(
+                1,
+                left=TreeNode(2, right=TreeNode(3)),
+                right=TreeNode(2, right=TreeNode(3)),
+            ),
+            False,
+        ),
+        (lambda: TreeNode(1), True),
+    ):
+        root = build()
+        assert (actual := is_symmetric(root)) is result, actual
+        assert (actual := is_symmetric_recursive(root)) is result, actual

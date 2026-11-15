@@ -15,14 +15,14 @@ def dfs(nums: list[int], candidate: list[int], res: list[list[int]]) -> None:
         if i > 0 and nums[i] == nums[i - 1]:
             continue
         new_candidate = candidate + [nums[i]]
-        subnums = nums[i + 1:]
+        subnums = nums[i + 1 :]
         dfs(subnums, new_candidate, res)
 
 
 if __name__ == "__main__":
     for nums, res in (
-            ([1, 2, 2], [[], [1], [1, 2], [1, 2, 2], [2], [2, 2]]),
-            ([0], [[], [0]])
+        ([1, 2, 2], [[], [1], [1, 2], [1, 2, 2], [2], [2, 2]]),
+        ([0], [[], [0]]),
     ):
         actual = subsets_with_dup(nums)
         actual.sort()  # suboptimal workaround for comparison

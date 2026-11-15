@@ -1,10 +1,9 @@
 # 876. Middle of the Linked List
-from typing import Optional
 
 from leet.linked_lists.utils import ListNode
 
 
-def middle_node(head: Optional[ListNode]) -> Optional[ListNode]:
+def middle_node(head: ListNode | None) -> ListNode | None:
     fast = head
     slow = head
     while fast.next and fast.next.next:

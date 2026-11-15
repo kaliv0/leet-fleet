@@ -17,8 +17,8 @@ def erase_overlap_intervals(intervals: list[list[int]]) -> int:
 
 if __name__ == "__main__":
     for intervals, result in (
-            ([[1, 2], [2, 3], [3, 4], [1, 3]], 1),
-            ([[1, 2], [1, 2], [1, 2]], 2),
-            ([[1, 2], [2, 3]], 0)
+        ([[1, 2], [2, 3], [3, 4], [1, 3]], 1),
+        ([[1, 2], [1, 2], [1, 2]], 2),
+        ([[1, 2], [2, 3]], 0),
     ):
         assert (actual := erase_overlap_intervals(intervals)) == result, actual

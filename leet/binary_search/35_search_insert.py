@@ -22,8 +22,9 @@ if __name__ == "__main__":
         ([1, 3, 5, 6], 5, 2),
         ([1, 3, 5, 6], 2, 1),
         ([1, 3, 5, 6], 7, 4),
-        ([], 0, 0)
+        ([], 0, 0),
     ]
     for nums, target, result in cases:
-        assert (actual := search_insert(nums, target)) == result, \
+        assert (actual := search_insert(nums, target)) == result, (
             f"{actual} != {result}, {nums=}"
+        )

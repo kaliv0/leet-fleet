@@ -30,7 +30,7 @@ class LRUCache:
 
     def put(self, key: int, value: int) -> None:
         """Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache.
-            If the number of keys exceeds the capacity from this operation, evict the least recently used key."""
+        If the number of keys exceeds the capacity from this operation, evict the least recently used key."""
         if key in self.kv_map:
             # update val
             self.kv_map[key].val = value
@@ -73,12 +73,12 @@ if __name__ == "__main__":
     ops_cases = [
         ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"],
         ["LRUCache", "put", "get"],
-        ["LRUCache", "put", "put", "put", "put", "get", "get"]
+        ["LRUCache", "put", "put", "put", "put", "get", "get"],
     ]
     vals_cases = [
         [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]],
         [[1], [2, 1], [2]],
-        [[2], [2, 1], [1, 1], [2, 3], [4, 1], [1], [2]]
+        [[2], [2, 1], [1, 1], [2, 3], [4, 1], [1], [2]],
     ]
 
     for ops, vals in zip(ops_cases, vals_cases):

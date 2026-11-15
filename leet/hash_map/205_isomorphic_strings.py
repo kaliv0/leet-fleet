@@ -18,8 +18,8 @@ def is_isomorphic(s: str, t: str) -> bool:
 
 if __name__ == "__main__":
     for s, t, flag in (
-            ("egg", "add", True),
-            ("foo", "bar", False),
-            ("paper", "title", True),
+        ("egg", "add", True),
+        ("foo", "bar", False),
+        ("paper", "title", True),
     ):
         assert (act := is_isomorphic(s, t)) == flag, f"{act} != {flag}"

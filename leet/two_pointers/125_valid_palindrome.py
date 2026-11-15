@@ -16,8 +16,13 @@ def is_palindrome(s: str) -> bool:
     return True
 
 
-if __name__ == '__main__':
-    assert is_palindrome("Was it a car or a cat I saw?") is True
-    assert is_palindrome("tab a cat") is False
-    assert is_palindrome("Never odd or even") is True
-    assert is_palindrome(".,") is True
+if __name__ == "__main__":
+    cases = [
+        ("Was it a car or a cat I saw?", True),
+        ("tab a cat", False),
+        ("Never odd or even", True),
+        (".,", True),
+    ]
+
+    for s, result in cases:
+        assert (actual := is_palindrome(s)) is result, actual

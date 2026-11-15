@@ -20,10 +20,8 @@ def find_anagrams(s, p):
 
 
 if __name__ == "__main__":
-    cases = [
+    for s, p, res in (
         ("cbaebabacd", "abc", [0, 6]),
-        ("abab", "ab", [0, 1, 2])
-    ]
-
-    for s, p, res in cases:
+        ("abab", "ab", [0, 1, 2]),
+    ):
         assert (actual := find_anagrams(s, p)) == res, f"{actual} != {res}, {s=}, {p=}"

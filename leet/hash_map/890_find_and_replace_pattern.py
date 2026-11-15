@@ -24,9 +24,11 @@ def find_and_replace_pattern(words: list[str], pattern: str) -> list[str]:
     return res
 
 
-if __name__ == '__main__':
-    for idx, (words, pattern, res) in enumerate((
-            (["abc", "deq", "mee", "aqq", "dkd", "ccc"], "abb", ["mee", "aqq"]),
-            (["a", "b", "c"], "a", ["a", "b", "c"]),
-    )):
-        assert (act := find_and_replace_pattern(words, pattern)) == res, f"{act} != {res}, {idx=}"
+if __name__ == "__main__":
+    for words, pattern, res in (
+        (["abc", "deq", "mee", "aqq", "dkd", "ccc"], "abb", ["mee", "aqq"]),
+        (["a", "b", "c"], "a", ["a", "b", "c"]),
+    ):
+        assert (act := find_and_replace_pattern(words, pattern)) == res, (
+            f"{act} != {res}"
+        )

@@ -1,5 +1,6 @@
 # 242. Valid Anagram
 
+
 def is_anagram(s: str, t: str) -> bool:
     if len(s) != len(t):
         return False
@@ -17,5 +18,8 @@ def is_anagram(s: str, t: str) -> bool:
 
 
 if __name__ == "__main__":
-    assert is_anagram(s="anagram", t="nagaram") is True
-    assert is_anagram(s="rat", t="car") is False
+    for s, t, result in (
+        ("anagram", "nagaram", True),
+        ("rat", "car", False),
+    ):
+        assert (actual := is_anagram(s, t)) == result, actual

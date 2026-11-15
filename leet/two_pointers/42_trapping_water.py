@@ -30,7 +30,7 @@ def trap(height: list[int]) -> int:
 
 if __name__ == "__main__":
     for nums, res in (
-            ([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1], 6),
-            ([4, 2, 0, 3, 2, 5], 9)
+        ([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1], 6),
+        ([4, 2, 0, 3, 2, 5], 9),
     ):
         assert (actual := trap(nums)) == res, actual

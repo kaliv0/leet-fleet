@@ -19,6 +19,9 @@ def length_of_last_word(s: str) -> int:
 
 
 if __name__ == "__main__":
-    assert length_of_last_word("Hello World") == 5
-    assert length_of_last_word("   fly me   to   the moon  ") == 4
-    assert length_of_last_word("luffy is still joyboy") == 6
+    for s, result in (
+        ("Hello World", 5),
+        ("   fly me   to   the moon  ", 4),
+        ("luffy is still joyboy", 6),
+    ):
+        assert (actual := length_of_last_word(s)) == result, actual

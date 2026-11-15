@@ -1,10 +1,9 @@
 # 61. Rotate List
-from typing import Optional
 
-from leet.linked_lists.utils import ListNode, traverse_list
+from leet.linked_lists.utils import ListNode, build_list, traverse_list
 
 
-def rotate_right(head: Optional[ListNode], k: int) -> Optional[ListNode]:
+def rotate_right(head: ListNode | None, k: int) -> ListNode | None:
     if head is None or head.next is None or k == 0:
         return head
 
@@ -44,7 +43,7 @@ def rotate_right(head: Optional[ListNode], k: int) -> Optional[ListNode]:
     return dummy.next
 
 
-def rotate_right_brute_force(head: Optional[ListNode], k: int) -> Optional[ListNode]:
+def rotate_right_brute_force(head: ListNode | None, k: int) -> ListNode | None:
     if head is None or head.next is None:
         return head
 
@@ -67,33 +66,17 @@ def rotate_right_brute_force(head: Optional[ListNode], k: int) -> Optional[ListN
 
 
 if __name__ == "__main__":
-    list_1 = ListNode(
-        val=1, next=ListNode(
-            val=2, next=ListNode(
-                val=3, next=ListNode(
-                    val=4, next=ListNode(
-                        val=5)))))
-    # assert traverse_list(rotate_right_brute_force(list_1, 2)) == [4, 5, 1, 2, 3]
-    assert traverse_list(rotate_right(list_1, 2)) == [4, 5, 1, 2, 3]
+    cases = [
+        ([1, 2, 3, 4, 5], 2, [4, 5, 1, 2, 3]),
+        ([0, 1, 2], 4, [2, 0, 1]),
+        ([1, 2], 1, [2, 1]),
+        ([1, 2], 2, [1, 2]),
+        ([], 2, []),
+        ([1], 4, [1]),
+        ([1], 0, [1]),
+    ]
 
-    list_2 = ListNode(
-        val=0, next=ListNode(
-            val=1, next=ListNode(
-                val=2)))
-    # assert traverse_list(rotate_right_brute_force(list_2, 4)) == [2, 0, 1]
-    assert traverse_list(rotate_right(list_2, 4)) == [2, 0, 1]
-
-    list_3 = ListNode(val=1, next=ListNode(val=2))
-    # assert traverse_list(rotate_right_brute_force(list_3, 1)) == [2, 1]
-    assert traverse_list(rotate_right(list_3, 1)) == [2, 1]
-
-    list_4 = ListNode(val=1, next=ListNode(val=2))
-    assert traverse_list(rotate_right(list_4, 2)) == [1, 2]
-
-    # assert traverse_list(rotate_right_brute_force(None, 2)) == []
-    assert traverse_list(rotate_right(None, 2)) == []
-
-    # assert traverse_list(rotate_right_brute_force(ListNode(val=1), 4)) == [1]
-    assert traverse_list(rotate_right(ListNode(val=1), 4)) == [1]
-
-    assert traverse_list(rotate_right(ListNode(val=1), 0)) == [1]
+    for inp, k, result in cases:
+        assert (actual := traverse_list(rotate_right(build_list(inp), k))) == result, (
+            actual
+        )

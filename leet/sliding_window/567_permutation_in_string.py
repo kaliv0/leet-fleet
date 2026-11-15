@@ -56,5 +56,8 @@ def get_index(ch):
 
 
 if __name__ == "__main__":
-    assert check_inclusion(s1="ab", s2="eidbaooo") == True
-    assert check_inclusion(s1="ab", s2="eidboaoo") == False
+    for s1, s2, result in (
+        ("ab", "eidbaooo", True),
+        ("ab", "eidboaoo", False),
+    ):
+        assert (actual := check_inclusion(s1, s2)) == result, actual

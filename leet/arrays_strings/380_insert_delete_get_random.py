@@ -3,7 +3,6 @@ from random import choice
 
 
 class RandomizedSet:
-
     def __init__(self):
         self.lst = []
         self.dct = {}
@@ -34,24 +33,37 @@ class RandomizedSet:
 
 
 if __name__ == "__main__":
-    randomized_set = RandomizedSet()
-    assert randomized_set.insert(1)
-    assert randomized_set.remove(2) is False
-    assert randomized_set.insert(2)
-    assert randomized_set.get_random() in (1, 2)
-    assert randomized_set.remove(1)
-    assert randomized_set.insert(2) is False
-    assert randomized_set.get_random() == 2
-
-    randomized_set = RandomizedSet()
-    assert randomized_set.remove(0) is False
-    assert randomized_set.remove(0) is False
-    assert randomized_set.insert(0)
-    assert randomized_set.get_random() == 0
-    assert randomized_set.remove(0)
-    assert randomized_set.insert(0)
-
-    randomized_set = RandomizedSet()
-    assert randomized_set.insert(1)
-    assert randomized_set.remove(1)
-    assert randomized_set.insert(1)
+    for ops in (
+        [
+            ("insert", 1, True),
+            ("remove", 2, False),
+            ("insert", 2, True),
+            ("get_random_in", (1, 2)),
+            ("remove", 1, True),
+            ("insert", 2, False),
+            ("get_random", 2),
+        ],
+        [
+            ("remove", 0, False),
+            ("remove", 0, False),
+            ("insert", 0, True),
+            ("get_random", 0),
+            ("remove", 0, True),
+            ("insert", 0, True),
+        ],
+        [
+            ("insert", 1, True),
+            ("remove", 1, True),
+            ("insert", 1, True),
+        ],
+    ):
+        rs = RandomizedSet()
+        for op in ops:
+            if op[0] == "insert":
+                assert (actual := rs.insert(op[1])) == op[2], actual
+            elif op[0] == "remove":
+                assert (actual := rs.remove(op[1])) == op[2], actual
+            elif op[0] == "get_random":
+                assert (actual := rs.get_random()) == op[1], actual
+            elif op[0] == "get_random_in":
+                assert (actual := rs.get_random()) in op[1], actual

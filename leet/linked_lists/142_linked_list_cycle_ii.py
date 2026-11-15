@@ -1,11 +1,10 @@
 # 142. Linked List Cycle II
-from typing import Optional
 
 from leet.linked_lists.utils import ListNode
 
 
 # Floyd's
-def detect_cycle(head: Optional[ListNode]) -> Optional[ListNode]:
+def detect_cycle(head: ListNode | None) -> ListNode | None:
     # detect cycle
     slow = fast = head
     while fast and fast.next:
@@ -26,7 +25,7 @@ def detect_cycle(head: Optional[ListNode]) -> Optional[ListNode]:
     return fast
 
 
-def detect_cycle_alt(head: Optional[ListNode]) -> Optional[ListNode]:
+def detect_cycle_alt(head: ListNode | None) -> ListNode | None:
     if head is None:
         return None
 

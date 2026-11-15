@@ -32,7 +32,11 @@ def _bin_search_insert(intervals: list[list[int]], new_interval: list[int]) -> N
 
 if __name__ == "__main__":
     for intervals, new_interval, result in (
-            ([[1, 3], [6, 9]], [2, 5], [[1, 5], [6, 9]]),
-            ([[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], [4, 8], [[1, 2], [3, 10], [12, 16]]),
+        ([[1, 3], [6, 9]], [2, 5], [[1, 5], [6, 9]]),
+        (
+            [[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]],
+            [4, 8],
+            [[1, 2], [3, 10], [12, 16]],
+        ),
     ):
         assert (actual := insert(intervals, new_interval)) == result, actual

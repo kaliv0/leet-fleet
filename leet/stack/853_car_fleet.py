@@ -1,5 +1,6 @@
 # 853. Car Fleet
 
+
 def car_fleet(target: int, position: list[int], speed: list[int]) -> int:
     cars_coord = [(p, s) for p, s in zip(position, speed)]
     cars_coord.sort(reverse=True)
@@ -19,5 +20,8 @@ def car_fleet(target: int, position: list[int], speed: list[int]) -> int:
 
 
 if __name__ == "__main__":
-    assert car_fleet(target = 10, position = [1,4], speed = [3,2]) == 1
-    assert car_fleet(target = 10, position = [4,1,0,7], speed = [2,2,1,1]) == 3
+    for target, position, speed, result in (
+        (10, [1, 4], [3, 2], 1),
+        (10, [4, 1, 0, 7], [2, 2, 1, 1], 3),
+    ):
+        assert (actual := car_fleet(target, position, speed)) == result, actual

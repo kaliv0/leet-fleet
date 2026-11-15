@@ -1,10 +1,9 @@
 # 100. Same Tree
-from typing import Optional
 
 from leet.binary_trees.utils import TreeNode
 
 
-def is_same_tree(p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+def is_same_tree(p: TreeNode | None, q: TreeNode | None) -> bool:
     return _dfs(p) == _dfs(q)
 
 
@@ -25,7 +24,7 @@ def _dfs(root):
     return res
 
 
-def is_same_tree_recursive(p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+def is_same_tree_recursive(p: TreeNode | None, q: TreeNode | None) -> bool:
     if p is None and q is None:
         return True
 
@@ -33,22 +32,36 @@ def is_same_tree_recursive(p: Optional[TreeNode], q: Optional[TreeNode]) -> bool
     if (p and p.val) != (q and q.val):
         return False
 
-    return is_same_tree_recursive(p.left, q.left) and is_same_tree_recursive(p.right, q.right)
+    return is_same_tree_recursive(p.left, q.left) and is_same_tree_recursive(
+        p.right, q.right
+    )  # type:ignore
 
 
-if __name__ == '__main__':
-    p = TreeNode(val=1, left=TreeNode(2), right=TreeNode(3))
-    q = TreeNode(val=1, left=TreeNode(2), right=TreeNode(3))
-    assert is_same_tree(p, q) is True
-    assert is_same_tree_recursive(p, q) is True
-
+if __name__ == "__main__":
     # NB: because of this we need to keep track of all children nodes even if they are None (in iterative dfs approach)
-    p = TreeNode(val=1, left=TreeNode(2), right=None)
-    q = TreeNode(val=1, left=None, right=TreeNode(2))
-    assert is_same_tree(p, q) is False
-    assert is_same_tree_recursive(p, q) is False
-
-    p = TreeNode(val=1, left=TreeNode(2), right=TreeNode(1))
-    q = TreeNode(val=1, left=TreeNode(1), right=TreeNode(2))
-    assert is_same_tree(p, q) is False
-    assert is_same_tree_recursive(p, q) is False
+    for build, result in (
+        (
+            lambda: (
+                TreeNode(val=1, left=TreeNode(2), right=TreeNode(3)),
+                TreeNode(val=1, left=TreeNode(2), right=TreeNode(3)),
+            ),
+            True,
+        ),
+        (
+            lambda: (
+                TreeNode(val=1, left=TreeNode(2), right=None),
+                TreeNode(val=1, left=None, right=TreeNode(2)),
+            ),
+            False,
+        ),
+        (
+            lambda: (
+                TreeNode(val=1, left=TreeNode(2), right=TreeNode(1)),
+                TreeNode(val=1, left=TreeNode(1), right=TreeNode(2)),
+            ),
+            False,
+        ),
+    ):
+        p, q = build()
+        assert (actual := is_same_tree(p, q)) is result, actual
+        assert (actual := is_same_tree_recursive(p, q)) is result, actual

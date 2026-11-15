@@ -1,5 +1,6 @@
 # 5. Longest Palindromic Substring
 
+
 def longest_palindrome(s):
     # empty in single-char string are themselves palindromes
     if len(s) in {0, 1}:
@@ -26,7 +27,7 @@ def expand_palindrome(s, left, right):
     while left >= 0 and right < len(s):
         if s[left] != s[right]:
             break
-        palindrome = s[left: right + 1]
+        palindrome = s[left : right + 1]
         left = left - 1
         right = right + 1
     return palindrome
@@ -43,5 +44,4 @@ if __name__ == "__main__":
     ]
 
     for s, res in cases:
-        assert (actual := longest_palindrome(s)) == res, \
-            f"{actual} != {res}, {s=}"
+        assert (actual := longest_palindrome(s)) == res, f"{actual} != {res}, {s=}"

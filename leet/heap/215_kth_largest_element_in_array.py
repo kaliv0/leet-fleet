@@ -14,7 +14,7 @@ def find_kth_largest(nums: list[int], k: int) -> int:
 
 if __name__ == "__main__":
     for nums, k, res in (
-            ([3, 2, 1, 5, 6, 4], 2, 5),
-            ([3, 2, 3, 1, 2, 4, 5, 5, 6], 4, 4)
+        ([3, 2, 1, 5, 6, 4], 2, 5),
+        ([3, 2, 3, 1, 2, 4, 5, 5, 6], 4, 4),
     ):
         assert (actual := find_kth_largest(nums, k)) == res, actual

@@ -6,21 +6,21 @@ def calculate(s: str) -> int:
 def _calculate(s: str, idx: int) -> tuple[int, int]:
     stack = []
     num = 0
-    sign = '+'
+    sign = "+"
     while idx < len(s):
         match ch := s[idx]:
-            case '+':
+            case "+":
                 _append_to_stack(num, sign, stack)
                 num = 0
-                sign = '+'
-            case '-':
+                sign = "+"
+            case "-":
                 _append_to_stack(num, sign, stack)
                 num = 0
-                sign = '-'
-            case '(':
+                sign = "-"
+            case "(":
                 num, adv_idx = _calculate(s, idx + 1)
                 idx = adv_idx
-            case ')':
+            case ")":
                 _append_to_stack(num, sign, stack)
                 return sum(stack), idx
             case _ as d if d.isdigit():
@@ -34,17 +34,17 @@ def _calculate(s: str, idx: int) -> tuple[int, int]:
 
 def _append_to_stack(num: int, sign: str, stack: list[int]) -> None:
     match sign:
-        case '+':
+        case "+":
             stack.append(num)
-        case '-':
+        case "-":
             stack.append(-num)
 
 
 if __name__ == "__main__":
     for s, res in (
-            ("1 + 1", 2),
-            (" (2-1) + 2 ", 3),
-            (" 24-1 + 2 ", 25),
-            ("(1+(4+5+2)-3)+(6+8)", 23),
+        ("1 + 1", 2),
+        (" (2-1) + 2 ", 3),
+        (" 24-1 + 2 ", 25),
+        ("(1+(4+5+2)-3)+(6+8)", 23),
     ):
         assert (actual := calculate(s)) == res, actual

@@ -1,10 +1,7 @@
 # 45. Jump Game II
 
 
-from typing import List
-
-
-def jump(nums: List[int]) -> int:
+def jump(nums: list[int]) -> int:
     jumps = 0
     reachable = 0
     position = 0
@@ -16,17 +13,13 @@ def jump(nums: List[int]) -> int:
     return jumps
 
 
-if __name__ == '__main__':
-    nums = [2, 3, 1, 1, 4]
-    # output -> 2
+if __name__ == "__main__":
+    cases = [
+        ([2, 3, 1, 1, 4], 2),
+        ([2, 3, 0, 1, 4], 2),
+        ([2, 3, 1], 1),
+        ([1, 1, 3, 1, 1], 3),
+    ]
 
-    # nums = [2,3,0,1,4]
-    # output -> 2
-
-    # nums = [2, 3, 1]
-    # output -> 1
-
-    # nums = [1, 1, 3, 1, 1]
-    # output -> 3
-
-    print(jump(nums))
+    for nums, result in cases:
+        assert (actual := jump(nums)) == result, actual

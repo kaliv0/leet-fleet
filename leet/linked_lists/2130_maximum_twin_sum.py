@@ -1,6 +1,6 @@
 # 2130. Maximum Twin Sum of a Linked List
 
-from leet.linked_lists.utils import ListNode
+from leet.linked_lists.utils import ListNode, build_list
 
 
 # NB: number of nodes is always even, sum is always positive
@@ -48,28 +48,9 @@ def reverse_list(head):
 
 
 if __name__ == "__main__":
-    # case_1
-    list_1 = ListNode(
-        val=5, next=ListNode(
-            val=4, next=ListNode(
-                val=2, next=ListNode(
-                    val=1,
-                )
-            )
-        )
-    )
-    # assert pair_sum(list_1) == 6
-
-    list_2 = ListNode(
-        val=4, next=ListNode(
-            val=2, next=ListNode(
-                val=2, next=ListNode(
-                    val=3,
-                )
-            )
-        )
-    )
-    # assert pair_sum(list_2) == 7
-
-    list_3 = ListNode(val=1, next=ListNode(val=100000))
-    assert pair_sum(list_3) == 100001
+    for inp, result in (
+        ([5, 4, 2, 1], 6),
+        ([4, 2, 2, 3], 7),
+        ([1, 100000], 100001),
+    ):
+        assert (actual := pair_sum(build_list(inp))) == result, actual

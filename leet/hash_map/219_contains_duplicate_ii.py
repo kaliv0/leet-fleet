@@ -1,5 +1,6 @@
 # 219. Contains Duplicate II
 
+
 def contains_nearby_duplicate(nums, k):
     hashmap = {}
     for i, num in enumerate(nums):
@@ -14,12 +15,11 @@ def contains_nearby_duplicate(nums, k):
 
 
 if __name__ == "__main__":
-    cases = [
+    for nums, k, result in (
         ([1, 2, 3, 1], 3, True),
         ([1, 0, 1, 1], 1, True),
         ([1, 2, 3, 1, 2, 3], 2, False),
-    ]
-
-    for nums, k, result in cases:
-        assert (actual := contains_nearby_duplicate(nums, k)) == result, \
+    ):
+        assert (actual := contains_nearby_duplicate(nums, k)) == result, (
             f"{actual} != {result}, {nums=}, {k=}"
+        )

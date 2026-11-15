@@ -14,5 +14,8 @@ def str_str(haystack: str, needle: str) -> int:
 
 
 if __name__ == "__main__":
-    assert str_str("sadbutsad", "sad") == 0
-    assert str_str("leetcode", "leeto") == -1
+    for haystack, needle, result in (
+        ("sadbutsad", "sad", 0),
+        ("leetcode", "leeto", -1),
+    ):
+        assert (actual := str_str(haystack, needle)) == result, actual

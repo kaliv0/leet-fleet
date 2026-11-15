@@ -38,12 +38,11 @@ def subarray_sum_opt(nums: list[int], k: int) -> int:
 
 
 if __name__ == "__main__":
-    cases = [
-        # ([1, 1, 1], 2, 2),
-        # ([1, 2, 3], 3, 2),
+    for nums, k, res in (
+        ([1, 1, 1], 2, 2),
+        ([1, 2, 3], 3, 2),
         ([1, -1, 0], 0, 3),
-    ]
-
-    for nums, k, res in cases:
-        assert (actual := subarray_sum_opt(nums, k)) == res, \
+    ):
+        assert (actual := subarray_sum_opt(nums, k)) == res, (
             f"{actual} != {res} -> {nums=}, {k=}"
+        )

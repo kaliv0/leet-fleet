@@ -20,22 +20,14 @@ def dfs(nums, target, comb, res):
             continue
         curr_num = nums[i]
         comb.append(curr_num)
-        dfs(nums=nums[i + 1:], target=target - curr_num, comb=comb, res=res)
+        dfs(nums=nums[i + 1 :], target=target - curr_num, comb=comb, res=res)
         comb.pop()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     for nums, target, res in (
-            ([10, 1, 2, 7, 6, 1, 5], 8, [
-                [1, 1, 6],
-                [1, 2, 5],
-                [1, 7],
-                [2, 6]
-            ]),
-            #####
-            ([2, 5, 2, 1, 2], 5, [
-                [1, 2, 2],
-                [5]
-            ]),
+        ([10, 1, 2, 7, 6, 1, 5], 8, [[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]]),
+        #####
+        ([2, 5, 2, 1, 2], 5, [[1, 2, 2], [5]]),
     ):
         assert (actual := combination_sum_2(nums, target)) == res, actual

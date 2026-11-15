@@ -18,5 +18,15 @@ function generate(numRows: number): number[][] {
     return triangle;
 }
 
-console.log(generate(5)); // [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
-console.log(generate(1)); // [[1]]
+const generateCases = [
+    { numRows: 5, result: [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]] },
+    { numRows: 1, result: [[1]] },
+];
+
+generateCases.forEach(({ numRows, result }) => {
+    const actual = generate(numRows);
+    console.assert(
+        JSON.stringify(actual) === JSON.stringify(result),
+        `${JSON.stringify(actual)} !== ${JSON.stringify(result)}`,
+    );
+});

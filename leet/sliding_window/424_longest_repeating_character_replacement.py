@@ -23,5 +23,8 @@ def character_replacement(s: str, k: int) -> int:
 
 
 if __name__ == "__main__":
-    assert character_replacement(s="ABAB", k=2) == 4
-    assert character_replacement(s="AABABBA", k=1) == 4
+    for s, k, result in (
+        ("ABAB", 2, 4),
+        ("AABABBA", 1, 4),
+    ):
+        assert (actual := character_replacement(s, k)) == result, actual

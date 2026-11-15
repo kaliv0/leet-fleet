@@ -1,5 +1,5 @@
 # 82. Remove Duplicates from Sorted List II
-from leet.linked_lists.utils import ListNode, traverse_list
+from leet.linked_lists.utils import ListNode, build_list, traverse_list
 
 
 def delete_duplicates(head):
@@ -29,23 +29,14 @@ def delete_duplicates(head):
 
 
 if __name__ == "__main__":
-    list_1 = ListNode(
-        val=1, next=ListNode(
-            val=2, next=ListNode(
-                val=3, next=ListNode(
-                    val=3, next=ListNode(
-                        val=4, next=ListNode(
-                            val=4, next=ListNode(
-                                val=5)))))))
-    assert traverse_list(delete_duplicates(list_1)) == [1, 2, 5]
+    cases = [
+        ([1, 2, 3, 3, 4, 4, 5], [1, 2, 5]),
+        ([1, 1, 1, 2, 3], [2, 3]),
+        ([], []),
+        ([1, 1], []),
+    ]
 
-    list_2 = ListNode(
-        val=1, next=ListNode(
-            val=1, next=ListNode(
-                val=1, next=ListNode(
-                    val=2, next=ListNode(
-                        val=3)))))
-    assert traverse_list(delete_duplicates(list_2)) == [2, 3]
-
-    assert traverse_list(delete_duplicates(None)) == []
-    assert traverse_list(delete_duplicates(ListNode(val=1, next=ListNode(val=1)))) == []
+    for inp, result in cases:
+        assert (
+            actual := traverse_list(delete_duplicates(build_list(inp)))
+        ) == result, actual

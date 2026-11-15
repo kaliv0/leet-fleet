@@ -30,9 +30,32 @@ class MyStack {
     }
 }
 
-const myStack = new MyStack();
-console.log(myStack.push(1));
-console.log(myStack.push(2));
-console.log(myStack.top()); // return 2
-console.log(myStack.pop()); // return 2
-console.log(myStack.empty()); // return False
+const myStackCases = [
+    {
+        steps: [
+            { op: "push", x: 1 },
+            { op: "push", x: 2 },
+            { op: "top", result: 2 },
+            { op: "pop", result: 2 },
+            { op: "empty", result: false },
+        ],
+    },
+];
+
+myStackCases.forEach(({ steps }) => {
+    const stack = new MyStack();
+    steps.forEach((step) => {
+        if (step.op === "push") {
+            stack.push(step.x!);
+        } else if (step.op === "top") {
+            const actual = stack.top();
+            console.assert(actual === step.result, `${actual} !== ${step.result}`);
+        } else if (step.op === "pop") {
+            const actual = stack.pop();
+            console.assert(actual === step.result, `${actual} !== ${step.result}`);
+        } else if (step.op === "empty") {
+            const actual = stack.empty();
+            console.assert(actual === step.result, `${actual} !== ${step.result}`);
+        }
+    });
+});

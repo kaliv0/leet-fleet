@@ -1,5 +1,6 @@
 # 704. Binary Search
 
+
 def binary_search(arr, num, offset=0):
     if not arr:
         return -1
@@ -12,7 +13,7 @@ def binary_search(arr, num, offset=0):
     if curr_num > num:
         return binary_search(arr[0:curr_mid], num, offset)
 
-    return binary_search(arr[curr_mid + 1:], num, curr_mid + 1)
+    return binary_search(arr[curr_mid + 1 :], num, curr_mid + 1)
 
 
 def bin_search(nums, target, left, right):
@@ -37,9 +38,11 @@ if __name__ == "__main__":
         ([1], 2, -1),
         ([1, 2, 3, 4, 5, 6, 7], 2, 1),
         ([1, 2, 3, 4, 5, 6], -2, -1),
-        ([1, 2, 3, 4, 5, 6], 6, 5)
+        ([1, 2, 3, 4, 5, 6], 6, 5),
     ]
 
     for arr, num, res in cases:
-        assert (actual := bin_search(arr, num, 0, len(arr) - 1)) == res, f"{actual} != {res}"
+        assert (actual := bin_search(arr, num, 0, len(arr) - 1)) == res, (
+            f"{actual} != {res}"
+        )
         # assert (actual := binary_search(arr, num)) == res, f"{actual} != {res}"

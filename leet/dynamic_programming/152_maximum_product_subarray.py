@@ -35,10 +35,10 @@ def max_product_alt(nums: list[int]) -> int:
 
 if __name__ == "__main__":
     for nums, res in (
-            ([2, 3, -2, 4], 6),
-            ([-2, 0, -1], 0),
-            ([-3, -1, -1], 3),
-            ([3, -1, 4], 4),
-            ([1], 1),
+        ([2, 3, -2, 4], 6),
+        ([-2, 0, -1], 0),
+        ([-3, -1, -1], 3),
+        ([3, -1, 4], 4),
+        ([1], 1),
     ):
         assert (actual := max_product_alt(nums)) == res, f"{actual} != {res}"

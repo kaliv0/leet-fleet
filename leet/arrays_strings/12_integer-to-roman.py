@@ -1,5 +1,6 @@
 # 12. Integer to Roman
 
+
 def int_to_roman(num: int) -> str:
     NUMS_PAIRS = [
         (1000, "M"),
@@ -25,14 +26,10 @@ def int_to_roman(num: int) -> str:
     return result
 
 
-if __name__ == '__main__':
-    # num = 3
-    # "III"
-
-    # num = 58
-    # "LVIII"
-
-    num = 1994
-    # "MCMXCIV"
-
-    print(int_to_roman(num))
+if __name__ == "__main__":
+    for num, result in (
+        (3, "III"),
+        (58, "LVIII"),
+        (1994, "MCMXCIV"),
+    ):
+        assert (actual := int_to_roman(num)) == result, actual

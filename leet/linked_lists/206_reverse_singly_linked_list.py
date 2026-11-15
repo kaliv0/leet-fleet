@@ -1,10 +1,9 @@
 # 206. Reverse Linked List
-from typing import Optional
 
-from leet.linked_lists.utils import ListNode, traverse_list
+from leet.linked_lists.utils import ListNode, build_list, traverse_list
 
 
-def reverse_list(head: Optional[ListNode]) -> Optional[ListNode]:
+def reverse_list(head: ListNode | None) -> ListNode | None:
     if not head or not head.next:
         return head
 
@@ -23,23 +22,14 @@ def reverse_list(head: Optional[ListNode]) -> Optional[ListNode]:
 
 
 if __name__ == "__main__":
-    # case_1
-    five = ListNode(val=5, next=None)  # tail
-    four = ListNode(val=4, next=five)
-    three = ListNode(val=3, next=four)
-    two = ListNode(val=2, next=three)
-    one = ListNode(val=1, next=two)  # head
+    cases = [
+        ([1, 2, 3, 4, 5], [5, 4, 3, 2, 1]),
+        ([1, 2], [2, 1]),
+        ([1], [1]),
+        ([], []),
+    ]
 
-    assert traverse_list(reverse_list(one)) == [5, 4, 3, 2, 1]
-
-    # case_2
-    two = ListNode(val=2, next=None)  # tail
-    one = ListNode(val=1, next=two)  # head
-    assert traverse_list(reverse_list(one)) == [2, 1]
-
-    # case_3
-    one = ListNode(val=1, next=None)  # head & tail
-    assert traverse_list(reverse_list(one)) == [1]
-
-    # case_4
-    assert traverse_list(res := reverse_list(None)) == []
+    for inp, result in cases:
+        assert (actual := traverse_list(reverse_list(build_list(inp)))) == result, (
+            actual
+        )

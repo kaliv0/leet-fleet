@@ -15,9 +15,9 @@ def can_construct(ransom_note: str, magazine: str) -> bool:
 
 if __name__ == "__main__":
     for note, magazine, res in (
-            ("a", "b", False),
-            ("aa", "ab", False),
-            ("aa", "aab", True),
-            ("bg", "efjbdfbdgfjhhaiigfhbaejahgfbbgbjagbddfgdiaigdadhcfcj", True),
+        ("a", "b", False),
+        ("aa", "ab", False),
+        ("aa", "aab", True),
+        ("bg", "efjbdfbdgfjhhaiigfhbaejahgfbbgbjagbddfgdiaigdadhcfcj", True),
     ):
         assert (actual := can_construct(note, magazine)) == res, actual

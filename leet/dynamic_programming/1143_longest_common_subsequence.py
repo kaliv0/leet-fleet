@@ -14,6 +14,9 @@ def longest_common_subsequence(text1: str, text2: str) -> int:
 
 
 if __name__ == "__main__":
-    assert (actual := longest_common_subsequence(text1="abcde", text2="ace")) == 3
-    assert (actual := longest_common_subsequence(text1="abc", text2="abc")) == 3
-    assert (actual := longest_common_subsequence(text1="abc", text2="def")) == 0
+    for text1, text2, result in (
+        ("abcde", "ace", 3),
+        ("abc", "abc", 3),
+        ("abc", "def", 0),
+    ):
+        assert (actual := longest_common_subsequence(text1, text2)) == result, actual

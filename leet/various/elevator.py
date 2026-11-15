@@ -1,3 +1,4 @@
+# @skip: not a leetcode solution
 # In a small building people are queued up in front of the elevator.
 # Every person weighs a certain amount of kilograms and needs a lift to a specific floor within the building.
 # Calculate how many courses we would need to transfer all the people to their desired floors while keeping within the elevator restrictions
@@ -14,7 +15,11 @@ def elevator_task(people, floors, max_ppl, max_kg):
     while index < len(people):
         # enter elevator
         total_weight = 0
-        while index < len(people) and len(elevator) < max_ppl and people[index] + total_weight <= max_kg:
+        while (
+            index < len(people)
+            and len(elevator) < max_ppl
+            and people[index] + total_weight <= max_kg
+        ):
             elevator.appendleft((people[index], floors[index]))
             total_weight += people[index]
             index += 1
@@ -35,5 +40,8 @@ def elevator_task(people, floors, max_ppl, max_kg):
 if __name__ == "__main__":
     assert elevator_task([100, 160, 150, 30, 70, 200], [2, 4, 2, 6, 5, 3], 2, 250) == 11
     assert elevator_task([70, 80, 100], [2, 3, 5], 2, 150) == 5
-    assert elevator_task( [100, 70, 80], [3, 2, 2], 2, 150) == 4
-    assert elevator_task([10, 20, 100, 20, 200, 30, 70], [2, 3, 4, 5, 6, 7, 8], 2, 200) == 11
+    assert elevator_task([100, 70, 80], [3, 2, 2], 2, 150) == 4
+    assert (
+        elevator_task([10, 20, 100, 20, 200, 30, 70], [2, 3, 4, 5, 6, 7, 8], 2, 200)
+        == 11
+    )
